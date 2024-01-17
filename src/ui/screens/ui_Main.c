@@ -26,14 +26,6 @@ void ui_Main_screen_init(void)
     lv_obj_set_align(ui_Label1, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label1, "Ciao");
 
-    ui_Arc1 = lv_arc_create(ui_Main);
-    lv_obj_set_width(ui_Arc1, 150);
-    lv_obj_set_height(ui_Arc1, 150);
-    lv_obj_set_x(ui_Arc1, 78);
-    lv_obj_set_y(ui_Arc1, -107);
-    lv_obj_set_align(ui_Arc1, LV_ALIGN_CENTER);
-
-
     ui_Button1 = lv_btn_create(ui_Main);
     lv_obj_set_width(ui_Button1, 100);
     lv_obj_set_height(ui_Button1, 50);

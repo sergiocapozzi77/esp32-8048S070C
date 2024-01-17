@@ -29,7 +29,6 @@ void ui_Main_screen_init(void);
 extern lv_obj_t * ui_Main;
 extern lv_obj_t * ui_Panel1;
 extern lv_obj_t * ui_Label1;
-extern lv_obj_t * ui_Arc1;
 void ui_event_Button1(lv_event_t * e);
 extern lv_obj_t * ui_Button1;
 void ui_event_Button2(lv_event_t * e);

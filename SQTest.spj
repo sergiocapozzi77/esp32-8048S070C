@@ -565,324 +565,6 @@
             "saved_objtypeKey": "LABEL"
           },
           {
-            "guid": "GUID83658858-810990S30314",
-            "deepid": -743468588,
-            "locked": false,
-            "properties": [
-              {
-                "nid": -181315289,
-                "strtype": "OBJECT/Name",
-                "strval": "Arc1",
-                "InheritedType": 10
-              },
-              {
-                "nid": -524344656,
-                "strtype": "OBJECT/Layout",
-                "InheritedType": 1
-              },
-              {
-                "Flow": 0,
-                "Wrap": false,
-                "Reversed": false,
-                "MainAlignment": 0,
-                "CrossAlignment": 0,
-                "TrackAlignment": 0,
-                "LayoutType": 0,
-                "nid": 118004467,
-                "strtype": "OBJECT/Layout_type",
-                "strval": "No_layout",
-                "InheritedType": 13
-              },
-              {
-                "nid": -636580886,
-                "strtype": "OBJECT/Transform",
-                "InheritedType": 1
-              },
-              {
-                "nid": 360178931,
-                "flags": 17,
-                "strtype": "OBJECT/Position",
-                "intarray": [
-                  78,
-                  -107
-                ],
-                "InheritedType": 7
-              },
-              {
-                "nid": -853485461,
-                "flags": 17,
-                "strtype": "OBJECT/Size",
-                "intarray": [
-                  150,
-                  150
-                ],
-                "InheritedType": 7
-              },
-              {
-                "nid": 52819321,
-                "strtype": "OBJECT/Align",
-                "strval": "CENTER",
-                "InheritedType": 3
-              },
-              {
-                "nid": -602988690,
-                "flags": 1048576,
-                "strtype": "OBJECT/Flags",
-                "InheritedType": 1
-              },
-              {
-                "nid": 550020061,
-                "strtype": "OBJECT/Hidden",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -1587778126,
-                "strtype": "OBJECT/Clickable",
-                "strval": "True",
-                "InheritedType": 2
-              },
-              {
-                "nid": -1759419458,
-                "strtype": "OBJECT/Checkable",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -1607684775,
-                "strtype": "OBJECT/Press_lock",
-                "strval": "True",
-                "InheritedType": 2
-              },
-              {
-                "nid": -1765353854,
-                "strtype": "OBJECT/Click_focusable",
-                "strval": "True",
-                "InheritedType": 2
-              },
-              {
-                "nid": -1465846974,
-                "strtype": "OBJECT/Adv_hittest",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -358234696,
-                "strtype": "OBJECT/Ignore_layout",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": 229864339,
-                "strtype": "OBJECT/Floating",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -2005094806,
-                "strtype": "OBJECT/Overflow_visible",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -476831035,
-                "strtype": "OBJECT/Flex_in_new_track",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": 316442828,
-                "strtype": "OBJECT/Event_bubble",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -1744415642,
-                "strtype": "OBJECT/Gesture_bubble",
-                "strval": "True",
-                "InheritedType": 2
-              },
-              {
-                "nid": 167590809,
-                "strtype": "OBJECT/Snappable",
-                "strval": "True",
-                "InheritedType": 2
-              },
-              {
-                "nid": 538595984,
-                "strtype": "OBJECT/Scrollable",
-                "strval": "True",
-                "InheritedType": 2
-              },
-              {
-                "nid": -989094596,
-                "strtype": "OBJECT/Scroll_elastic",
-                "strval": "True",
-                "InheritedType": 2
-              },
-              {
-                "nid": -956829198,
-                "strtype": "OBJECT/Scroll_momentum",
-                "strval": "True",
-                "InheritedType": 2
-              },
-              {
-                "nid": 1357411894,
-                "strtype": "OBJECT/Scroll_on_focus",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -183952468,
-                "strtype": "OBJECT/Scroll_chain",
-                "strval": "True",
-                "InheritedType": 2
-              },
-              {
-                "nid": 451670107,
-                "strtype": "OBJECT/Scroll_with_arrow",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": 1973483952,
-                "strtype": "OBJECT/Scroll_one",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -1567128634,
-                "strtype": "OBJECT/Scrollbar_mode",
-                "strval": "AUTO",
-                "InheritedType": 3
-              },
-              {
-                "nid": 359118533,
-                "strtype": "OBJECT/Scroll_direction",
-                "strval": "ALL",
-                "InheritedType": 3
-              },
-              {
-                "nid": 309817916,
-                "flags": 1048576,
-                "strtype": "OBJECT/States",
-                "InheritedType": 1
-              },
-              {
-                "nid": 1132740785,
-                "strtype": "OBJECT/Checked",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -1306986720,
-                "strtype": "OBJECT/Disabled",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": 1337404130,
-                "strtype": "OBJECT/Focused",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -2008807329,
-                "strtype": "OBJECT/Pressed",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": 1066537568,
-                "strtype": "OBJECT/User_1",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": 379217053,
-                "strtype": "OBJECT/User_2",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -894863496,
-                "strtype": "OBJECT/User_3",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": 1847733576,
-                "strtype": "OBJECT/User_4",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
-                "nid": -1044416442,
-                "strtype": "ARC/Arc",
-                "InheritedType": 1
-              },
-              {
-                "nid": -1058491799,
-                "strtype": "ARC/Range",
-                "intarray": [
-                  0,
-                  100
-                ],
-                "InheritedType": 7
-              },
-              {
-                "nid": 132088608,
-                "strtype": "ARC/Value",
-                "InheritedType": 6
-              },
-              {
-                "nid": -211718352,
-                "strtype": "ARC/Bg_angles",
-                "intarray": [
-                  120,
-                  60
-                ],
-                "InheritedType": 7
-              },
-              {
-                "nid": 1176216627,
-                "strtype": "ARC/Mode",
-                "strval": "NORMAL",
-                "InheritedType": 3
-              },
-              {
-                "nid": -1442007062,
-                "strtype": "ARC/Rotation",
-                "InheritedType": 6
-              },
-              {
-                "part": "lv.PART.MAIN",
-                "childs": [],
-                "nid": 1626004041,
-                "strtype": "ARC/Style_main",
-                "strval": "lv.PART.MAIN, Rectangle, Pad, Arc",
-                "InheritedType": 11
-              },
-              {
-                "part": "lv.PART.INDICATOR",
-                "childs": [],
-                "nid": -369655642,
-                "strtype": "ARC/Style_indicator",
-                "strval": "lv.PART.INDICATOR, Rectangle, Pad, Arc",
-                "InheritedType": 11
-              },
-              {
-                "part": "lv.PART.KNOB",
-                "childs": [],
-                "nid": 477507398,
-                "strtype": "ARC/Style_knob",
-                "strval": "lv.PART.KNOB, Rectangle, Pad",
-                "InheritedType": 11
-              }
-            ],
-            "saved_objtypeKey": "ARC"
-          },
-          {
             "guid": "GUID8851518-812482S760314",
             "deepid": -1247229428,
             "locked": false,
@@ -4318,7 +4000,7 @@
                   {
                     "disabled": false,
                     "nid": 93194793,
-                    "strtype": "TEXTAREA/EventHandler",
+                    "strtype": "_event/EventHandler",
                     "strval": "DEFOCUSED",
                     "childs": [
                       {
@@ -4341,7 +4023,7 @@
                       },
                       {
                         "nid": 1497944389,
-                        "strtype": "_custom/action",
+                        "strtype": "_event/action",
                         "strval": "BASIC_PROPERTY",
                         "childs": [
                           {
@@ -4870,7 +4552,7 @@
           {
             "disabled": false,
             "nid": -1682170674,
-            "strtype": "SCREEN/EventHandler",
+            "strtype": "_event/EventHandler",
             "strval": "SCREEN_LOADED",
             "childs": [
               {
@@ -4893,7 +4575,7 @@
               },
               {
                 "nid": -465300254,
-                "strtype": "_custom/action",
+                "strtype": "_event/action",
                 "strval": "MODIFY FLAG",
                 "childs": [
                   {
@@ -4953,7 +4635,7 @@
       {
         "disabled": false,
         "nid": 890643694,
-        "strtype": "STARTEVENTS/EventHandler",
+        "strtype": "_event/EventHandler",
         "strval": "SCREEN_LOAD_START",
         "childs": [
           {
@@ -4976,7 +4658,7 @@
           },
           {
             "nid": -208241915,
-            "strtype": "_custom/action",
+            "strtype": "_event/action",
             "strval": "BASIC_PROPERTY",
             "childs": [
               {
@@ -5047,9 +4729,9 @@
     "theme_dark": false,
     "theme_color1": 5,
     "theme_color2": 0,
-    "uiExportFolderPath": "C:\\Users\\sergi\\source\\repos\\Makerfabs-Sunton-ESP32-S3-7-Display-with-LovyanGFX-and-LVGL\\src\\ui",
-    "projectExportFolderPath": "C:\\Users\\sergi\\source\\repos\\Makerfabs-Sunton-ESP32-S3-7-Display-with-LovyanGFX-and-LVGL\\src",
-    "backup_cnt": 85,
+    "uiExportFolderPath": "C:\\Users\\sergi\\Source\\Repos\\esp32-8048S070C\\src\\ui",
+    "projectExportFolderPath": ".\\",
+    "backup_cnt": 86,
     "autosave_cnt": 0,
     "lvgl_version": "8.2.0",
     "callfuncsexport": "C_FILE",

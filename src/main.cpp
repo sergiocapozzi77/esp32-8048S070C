@@ -5,18 +5,60 @@
 #include "gui/gui.h"
 #include "ui/ui.h"
 #include <WiFi.h>
+#include <HTTPClient.h>
+#include <ArduinoJson.h>
 
 bool scanWifi = false;
 
-// const char *ssid = "TP-Link_8724";
-// const char *password = "40950211";
-
-const char *ssid;
-const char *password;
+const char *ssid = "TP-Link_8724";
+const char *password = "40950211";
+// const char *ssid;
+// const char *password;
 
 void Button_Clicked_1(lv_event_t *e)
 {
   Serial.println("Clicked");
+
+  HTTPClient http;
+  http.begin("https://cloud.seatable.io/api/v2.1/dtable/app-access-token/");
+  http.addHeader("accept", "application/json");
+  http.addHeader("authorization", "Bearer ea6fa8dd468f479db3e2528d55423b9d27c51622");
+  int httpCode = http.GET();
+
+  // httpCode will be negative on error
+  if (httpCode > 0)
+  {
+    // HTTP header has been send and Server response header has been handled
+    Serial.printf("[HTTP] GET... code: %d\n", httpCode);
+
+    // file found at server
+    if (httpCode == HTTP_CODE_OK)
+    {
+      // Allocate the JSON document
+      DynamicJsonDocument doc(1024);
+
+      String payload = http.getString();
+      Serial.println(payload);
+      DeserializationError error = deserializeJson(doc, payload.c_str());
+
+      // Test if parsing succeeds
+      if (error)
+      {
+        Serial.print(F("deserializeJson() failed: "));
+        Serial.println(error.f_str());
+        return;
+      }
+
+      const char *access_token = doc["access_token"];
+      Serial.println(access_token);
+    }
+  }
+  else
+  {
+    Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+  }
+
+  http.end();
 }
 
 void WiFiConnect_Clicked(lv_event_t *e)
@@ -132,6 +174,16 @@ void setup()
   Serial.println(F("Tft starting"));
 
   gui_start();
+
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println(F("Wifi connected"));
 
   // WiFi.begin(ssid, password);
 
