@@ -8,32 +8,33 @@
 void ui_Main_screen_init(void)
 {
     ui_Main = lv_obj_create(NULL);
-    lv_obj_clear_flag(ui_Main, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_clear_flag(ui_Main, LV_OBJ_FLAG_SCROLLABLE); /// Flags
 
-    ui_Panel1 = lv_obj_create(ui_Main);
-    lv_obj_set_width(ui_Panel1, 268);
-    lv_obj_set_height(ui_Panel1, 125);
-    lv_obj_set_x(ui_Panel1, -211);
-    lv_obj_set_y(ui_Panel1, -135);
-    lv_obj_set_align(ui_Panel1, LV_ALIGN_CENTER);
-    lv_obj_clear_flag(ui_Panel1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    ui_RecipePanel = lv_obj_create(ui_Main);
+    lv_obj_set_width(ui_RecipePanel, 382);
+    lv_obj_set_height(ui_RecipePanel, 449);
+    lv_obj_set_x(ui_RecipePanel, -197);
+    lv_obj_set_y(ui_RecipePanel, 0);
+    lv_obj_set_align(ui_RecipePanel, LV_ALIGN_CENTER);
+    lv_obj_set_flex_flow(ui_RecipePanel, LV_FLEX_FLOW_COLUMN);
+    lv_obj_set_flex_align(ui_RecipePanel, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
 
     ui_Label1 = lv_label_create(ui_Main);
-    lv_obj_set_width(ui_Label1, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label1, -281);
-    lv_obj_set_y(ui_Label1, -142);
+    lv_obj_set_width(ui_Label1, LV_SIZE_CONTENT);  /// 1
+    lv_obj_set_height(ui_Label1, LV_SIZE_CONTENT); /// 1
+    lv_obj_set_x(ui_Label1, 36);
+    lv_obj_set_y(ui_Label1, -180);
     lv_obj_set_align(ui_Label1, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label1, "Ciao");
 
     ui_Button1 = lv_btn_create(ui_Main);
     lv_obj_set_width(ui_Button1, 100);
     lv_obj_set_height(ui_Button1, 50);
-    lv_obj_set_x(ui_Button1, -162);
-    lv_obj_set_y(ui_Button1, 31);
+    lv_obj_set_x(ui_Button1, 59);
+    lv_obj_set_y(ui_Button1, -115);
     lv_obj_set_align(ui_Button1, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Button1, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_Button1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_add_flag(ui_Button1, LV_OBJ_FLAG_SCROLL_ON_FOCUS); /// Flags
+    lv_obj_clear_flag(ui_Button1, LV_OBJ_FLAG_SCROLLABLE);    /// Flags
 
     ui_Button2 = lv_btn_create(ui_Main);
     lv_obj_set_width(ui_Button2, 55);
@@ -41,20 +42,53 @@ void ui_Main_screen_init(void)
     lv_obj_set_x(ui_Button2, 359);
     lv_obj_set_y(ui_Button2, -202);
     lv_obj_set_align(ui_Button2, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Button2, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_Button2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_add_flag(ui_Button2, LV_OBJ_FLAG_SCROLL_ON_FOCUS); /// Flags
+    lv_obj_clear_flag(ui_Button2, LV_OBJ_FLAG_SCROLLABLE);    /// Flags
 
     ui_Image1 = lv_img_create(ui_Main);
     lv_img_set_src(ui_Image1, &ui_img_3994418_internet_network_signal_wifi_wireless_icon_png);
-    lv_obj_set_width(ui_Image1, LV_SIZE_CONTENT);   /// 48
-    lv_obj_set_height(ui_Image1, LV_SIZE_CONTENT);    /// 48
+    lv_obj_set_width(ui_Image1, LV_SIZE_CONTENT);  /// 48
+    lv_obj_set_height(ui_Image1, LV_SIZE_CONTENT); /// 48
     lv_obj_set_x(ui_Image1, 285);
     lv_obj_set_y(ui_Image1, -202);
     lv_obj_set_align(ui_Image1, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Image1, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
-    lv_obj_clear_flag(ui_Image1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_add_flag(ui_Image1, LV_OBJ_FLAG_ADV_HITTEST);  /// Flags
+    lv_obj_clear_flag(ui_Image1, LV_OBJ_FLAG_SCROLLABLE); /// Flags
+
+    ui_RecipeItem = lv_obj_create(ui_Main);
+    lv_obj_remove_style_all(ui_RecipeItem);
+    lv_obj_set_width(ui_RecipeItem, 358);
+    lv_obj_set_height(ui_RecipeItem, 70);
+    lv_obj_set_x(ui_RecipeItem, 188);
+    lv_obj_set_y(ui_RecipeItem, 6);
+    lv_obj_set_align(ui_RecipeItem, LV_ALIGN_CENTER);
+    lv_obj_set_flex_flow(ui_RecipeItem, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(ui_RecipeItem, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER);
+    lv_obj_clear_flag(ui_RecipeItem, LV_OBJ_FLAG_SCROLLABLE); /// Flags
+
+    ui_RecipeImage = lv_img_create(ui_RecipeItem);
+    lv_obj_set_width(ui_RecipeImage, LV_SIZE_CONTENT);  /// 1
+    lv_obj_set_height(ui_RecipeImage, LV_SIZE_CONTENT); /// 1
+    lv_obj_set_align(ui_RecipeImage, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_RecipeImage, LV_OBJ_FLAG_ADV_HITTEST);  /// Flags
+    lv_obj_clear_flag(ui_RecipeImage, LV_OBJ_FLAG_SCROLLABLE); /// Flags
+
+    ui_RecipeLabel = lv_label_create(ui_RecipeItem);
+    lv_obj_set_width(ui_RecipeLabel, LV_SIZE_CONTENT);  /// 1
+    lv_obj_set_height(ui_RecipeLabel, LV_SIZE_CONTENT); /// 1
+    lv_obj_set_align(ui_RecipeLabel, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_RecipeLabel, "Recipe");
+
+    ui_Image2 = lv_img_create(ui_Main);
+
+    lv_obj_set_width(ui_Image2, LV_SIZE_CONTENT);  /// 60
+    lv_obj_set_height(ui_Image2, LV_SIZE_CONTENT); /// 60
+    lv_obj_set_x(ui_Image2, 238);
+    lv_obj_set_y(ui_Image2, -61);
+    lv_obj_set_align(ui_Image2, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_Image2, LV_OBJ_FLAG_ADV_HITTEST);  /// Flags
+    lv_obj_clear_flag(ui_Image2, LV_OBJ_FLAG_SCROLLABLE); /// Flags
 
     lv_obj_add_event_cb(ui_Button1, ui_event_Button1, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Button2, ui_event_Button2, LV_EVENT_ALL, NULL);
-
 }

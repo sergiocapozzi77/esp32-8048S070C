@@ -27,13 +27,17 @@ extern "C" {
 // SCREEN: ui_Main
 void ui_Main_screen_init(void);
 extern lv_obj_t * ui_Main;
-extern lv_obj_t * ui_Panel1;
+extern lv_obj_t * ui_RecipePanel;
 extern lv_obj_t * ui_Label1;
 void ui_event_Button1(lv_event_t * e);
 extern lv_obj_t * ui_Button1;
 void ui_event_Button2(lv_event_t * e);
 extern lv_obj_t * ui_Button2;
 extern lv_obj_t * ui_Image1;
+extern lv_obj_t * ui_RecipeItem;
+extern lv_obj_t * ui_RecipeImage;
+extern lv_obj_t * ui_RecipeLabel;
+extern lv_obj_t * ui_Image2;
 // SCREEN: ui_Options
 void ui_Options_screen_init(void);
 void ui_event_Options(lv_event_t * e);
@@ -54,6 +58,7 @@ extern lv_obj_t * ui____initial_actions0;
 
 LV_IMG_DECLARE(
     ui_img_3994418_internet_network_signal_wifi_wireless_icon_png);    // assets\3994418_internet_network_signal_wifi_wireless_icon.png
+LV_IMG_DECLARE(ui_img_pizza_png);    // assets\pizza.png
 
 
 

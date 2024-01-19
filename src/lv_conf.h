@@ -755,6 +755,10 @@
     #define LV_DEMO_MUSIC_AUTO_PLAY 0
 #endif
 
+/* libjpeg-turbo decoder library.
+ * Supports complete JPEG specifications and high-performance JPEG decoding. */
+#define LV_USE_LIBJPEG_TURBO 0
+
 /*--END OF LV_CONF_H--*/
 
 #endif /*LV_CONF_H*/

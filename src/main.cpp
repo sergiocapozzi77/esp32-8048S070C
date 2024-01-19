@@ -12,8 +12,182 @@ bool scanWifi = false;
 
 const char *ssid = "TP-Link_8724";
 const char *password = "40950211";
+
+String access_token;
+String dtable_uuid;
 // const char *ssid;
 // const char *password;
+
+lv_img_dsc_t *GetImage(String fileUrl)
+{
+  Serial.println("Get File");
+  HTTPClient http;
+  char baseAddress[512];
+  snprintf(baseAddress, sizeof(baseAddress), "https://cloud.seatable.io/api/v2.1/dtable/app-download-link/?path=%s", fileUrl.c_str());
+  Serial.println(baseAddress);
+
+  http.begin(baseAddress);
+  http.addHeader("accept", "application/json");
+  http.addHeader("authorization", "Bearer ea6fa8dd468f479db3e2528d55423b9d27c51622");
+
+  int httpCode = http.GET();
+  Serial.println("Get File 1");
+  // httpCode will be negative on error
+  if (httpCode > 0)
+  {
+    Serial.println("Get File 2");
+    // HTTP header has been send and Server response header has been handled
+    Serial.printf("[HTTP] GET... code: %d\n", httpCode);
+
+    // file found at server
+    if (httpCode == HTTP_CODE_OK)
+    {
+      DynamicJsonDocument doc(1024);
+
+      DeserializationError error = deserializeJson(doc, http.getStream());
+
+      // Test if parsing succeeds
+      if (error)
+      {
+        Serial.print(F("deserializeJson() failed: "));
+        Serial.println(error.f_str());
+        return NULL;
+      }
+
+      String download_link = String(doc["download_link"]);
+
+      Serial.print("Downloading image: ");
+      Serial.println(download_link);
+
+      HTTPClient httpImage;
+      httpImage.begin(download_link);
+      int httpCode = httpImage.GET();
+
+      // httpCode will be negative on error
+      if (httpCode > 0)
+      {
+        // HTTP header has been send and Server response header has been handled
+        Serial.printf("[HTTP] GET... code: %d\n", httpCode);
+
+        // file found at server
+        if (httpCode == HTTP_CODE_OK)
+        {
+          Serial.println("Http image");
+          WiFiClient *payload = httpImage.getStreamPtr();
+          uint8_t *image = new uint8_t[15000];
+          int index = 0;
+          uint8_t *buffer = new uint8_t[1000];
+          while (payload->available())
+          {
+            int read = payload->readBytes(buffer, 1000);
+            if (index == 0)
+            {
+              memcpy(&image[index], buffer + 4, read - 4);
+              index += read - 4;
+            }
+            else
+            {
+              memcpy(&image[index], buffer, read);
+              index += read;
+            }
+
+            if (read < 1000)
+            {
+              break;
+            }
+          }
+
+          delete buffer;
+
+          Serial.print("Image size: ");
+          Serial.println(index);
+
+          lv_img_dsc_t *my_img_dsc = new lv_img_dsc_t();
+          my_img_dsc->header.always_zero = 0;
+          my_img_dsc->header.w = 60;
+          my_img_dsc->header.h = 60;
+          my_img_dsc->header.cf = LV_IMG_CF_TRUE_COLOR;
+          my_img_dsc->data_size = index;
+          my_img_dsc->data = image;
+
+          return my_img_dsc;
+        }
+      }
+
+      Serial.println("Http image end");
+      httpImage.end();
+    }
+  }
+
+  Serial.println("Http end");
+  http.end();
+
+  return NULL;
+}
+
+void GetRecipes()
+{
+  HTTPClient http;
+  char baseAddress[256];
+  snprintf(baseAddress, sizeof(baseAddress), "https://cloud.seatable.io/dtable-server/api/v1/dtables/%s/rows/?table_name=%s", dtable_uuid.c_str(), "recipes");
+  Serial.println(baseAddress);
+  http.begin(baseAddress);
+  http.addHeader("accept", "application/json");
+
+  char uuid[512];
+  snprintf(uuid, sizeof(uuid), "Bearer %s", access_token.c_str());
+  Serial.println(uuid);
+  http.addHeader("authorization", uuid);
+
+  int httpCode = http.GET();
+
+  // httpCode will be negative on error
+  if (httpCode > 0)
+  {
+    // HTTP header has been send and Server response header has been handled
+    Serial.printf("[HTTP] GET... code: %d\n", httpCode);
+
+    // file found at server
+    if (httpCode == HTTP_CODE_OK)
+    {
+      // Allocate the JSON document
+      DynamicJsonDocument doc(12288);
+
+      String payload = http.getString();
+      Serial.println(payload);
+      DeserializationError error = deserializeJson(doc, payload.c_str());
+
+      // Test if parsing succeeds
+      if (error)
+      {
+        Serial.print(F("deserializeJson() failed: "));
+        Serial.println(error.f_str());
+        return;
+      }
+
+      Serial.print("Image: ");
+      // extract the values
+      JsonArray array = doc["rows"].as<JsonArray>();
+      JsonObject elem = array[0];
+      const char *img = elem["ImageBMP"][0]["url"];
+      Serial.println(img);
+      String image = String(img);
+      int pos = image.lastIndexOf("/files");
+      String path = String(image.substring(pos));
+      Serial.println(path);
+      Serial.println("End request");
+      http.end();
+      lv_img_dsc_t *img_desc = GetImage(path);
+      if (img_desc != NULL)
+      {
+        Serial.println("Setting recipe item");
+        lv_obj_t *recipeItem = createRecipeItem(img_desc);
+        delete img_desc->data;
+        delete img_desc;
+      }
+    }
+  }
+}
 
 void Button_Clicked_1(lv_event_t *e)
 {
@@ -37,9 +211,7 @@ void Button_Clicked_1(lv_event_t *e)
       // Allocate the JSON document
       DynamicJsonDocument doc(1024);
 
-      String payload = http.getString();
-      Serial.println(payload);
-      DeserializationError error = deserializeJson(doc, payload.c_str());
+      DeserializationError error = deserializeJson(doc, http.getStream());
 
       // Test if parsing succeeds
       if (error)
@@ -49,8 +221,9 @@ void Button_Clicked_1(lv_event_t *e)
         return;
       }
 
-      const char *access_token = doc["access_token"];
+      access_token = String(doc["access_token"]);
       Serial.println(access_token);
+      dtable_uuid = String(doc["dtable_uuid"]);
     }
   }
   else
@@ -59,6 +232,8 @@ void Button_Clicked_1(lv_event_t *e)
   }
 
   http.end();
+
+  GetRecipes();
 }
 
 void WiFiConnect_Clicked(lv_event_t *e)

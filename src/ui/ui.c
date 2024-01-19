@@ -12,13 +12,17 @@
 // SCREEN: ui_Main
 void ui_Main_screen_init(void);
 lv_obj_t * ui_Main;
-lv_obj_t * ui_Panel1;
+lv_obj_t * ui_RecipePanel;
 lv_obj_t * ui_Label1;
 void ui_event_Button1(lv_event_t * e);
 lv_obj_t * ui_Button1;
 void ui_event_Button2(lv_event_t * e);
 lv_obj_t * ui_Button2;
 lv_obj_t * ui_Image1;
+lv_obj_t * ui_RecipeItem;
+lv_obj_t * ui_RecipeImage;
+lv_obj_t * ui_RecipeLabel;
+lv_obj_t * ui_Image2;
 
 
 // SCREEN: ui_Options
