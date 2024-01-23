@@ -24,6 +24,13 @@ extern "C" {
 
 #include "ui_helpers.h"
 #include "ui_events.h"
+// SCREEN: ui_Recipe
+void ui_Recipe_screen_init(void);
+extern lv_obj_t * ui_Recipe;
+void ui_event_IngredientText(lv_event_t * e);
+extern lv_obj_t * ui_IngredientText;
+extern lv_obj_t * ui_IngredientsKeyboard;
+extern lv_obj_t * ui_IngredientsSuggestionPanel;
 // SCREEN: ui_Main
 void ui_Main_screen_init(void);
 extern lv_obj_t * ui_Main;
@@ -34,9 +41,6 @@ extern lv_obj_t * ui_Button1;
 void ui_event_Button2(lv_event_t * e);
 extern lv_obj_t * ui_Button2;
 extern lv_obj_t * ui_Image1;
-extern lv_obj_t * ui_RecipeItem;
-extern lv_obj_t * ui_RecipeImage;
-extern lv_obj_t * ui_RecipeLabel;
 extern lv_obj_t * ui_Image2;
 // SCREEN: ui_Options
 void ui_Options_screen_init(void);
@@ -53,6 +57,17 @@ extern lv_obj_t * ui_WiFiConnect;
 extern lv_obj_t * ui_WiFiConnectLbl;
 void ui_event_WiFiPassword(lv_event_t * e);
 extern lv_obj_t * ui_WiFiPassword;
+// SCREEN: ui_Components
+void ui_Components_screen_init(void);
+extern lv_obj_t * ui_Components;
+extern lv_obj_t * ui_RecipeItem;
+extern lv_obj_t * ui_RecipeImage;
+extern lv_obj_t * ui_RecipeLabel;
+extern lv_obj_t * ui_ChipPanel;
+extern lv_obj_t * ui_CloseLabel;
+extern lv_obj_t * ui_ChipText;
+extern lv_obj_t * ui_SuggestionButton;
+extern lv_obj_t * ui_SuggestionText;
 void ui_event____initial_actions0(lv_event_t * e);
 extern lv_obj_t * ui____initial_actions0;
 

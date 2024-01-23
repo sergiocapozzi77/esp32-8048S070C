@@ -1,5 +1,7 @@
-SET(SOURCES screens/ui_Main.c
+SET(SOURCES screens/ui_Recipe.c
+    screens/ui_Main.c
     screens/ui_Options.c
+    screens/ui_Components.c
     ui.c
     components/ui_comp_hook.c
     ui_helpers.c

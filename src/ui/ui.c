@@ -9,6 +9,15 @@
 ///////////////////// VARIABLES ////////////////////
 
 
+// SCREEN: ui_Recipe
+void ui_Recipe_screen_init(void);
+lv_obj_t * ui_Recipe;
+void ui_event_IngredientText(lv_event_t * e);
+lv_obj_t * ui_IngredientText;
+lv_obj_t * ui_IngredientsKeyboard;
+lv_obj_t * ui_IngredientsSuggestionPanel;
+
+
 // SCREEN: ui_Main
 void ui_Main_screen_init(void);
 lv_obj_t * ui_Main;
@@ -19,9 +28,6 @@ lv_obj_t * ui_Button1;
 void ui_event_Button2(lv_event_t * e);
 lv_obj_t * ui_Button2;
 lv_obj_t * ui_Image1;
-lv_obj_t * ui_RecipeItem;
-lv_obj_t * ui_RecipeImage;
-lv_obj_t * ui_RecipeLabel;
 lv_obj_t * ui_Image2;
 
 
@@ -40,6 +46,19 @@ lv_obj_t * ui_WiFiConnect;
 lv_obj_t * ui_WiFiConnectLbl;
 void ui_event_WiFiPassword(lv_event_t * e);
 lv_obj_t * ui_WiFiPassword;
+
+
+// SCREEN: ui_Components
+void ui_Components_screen_init(void);
+lv_obj_t * ui_Components;
+lv_obj_t * ui_RecipeItem;
+lv_obj_t * ui_RecipeImage;
+lv_obj_t * ui_RecipeLabel;
+lv_obj_t * ui_ChipPanel;
+lv_obj_t * ui_CloseLabel;
+lv_obj_t * ui_ChipText;
+lv_obj_t * ui_SuggestionButton;
+lv_obj_t * ui_SuggestionText;
 void ui_event____initial_actions0(lv_event_t * e);
 lv_obj_t * ui____initial_actions0;
 
@@ -54,6 +73,24 @@ lv_obj_t * ui____initial_actions0;
 ///////////////////// ANIMATIONS ////////////////////
 
 ///////////////////// FUNCTIONS ////////////////////
+void ui_event_IngredientText(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_FOCUSED) {
+        _ui_flag_modify(ui_IngredientsKeyboard, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+    }
+    if(event_code == LV_EVENT_DEFOCUSED) {
+        _ui_flag_modify(ui_IngredientsKeyboard, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+    }
+    if(event_code == LV_EVENT_READY) {
+        _ui_flag_modify(ui_IngredientsKeyboard, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+        IngredientsTextReady(e);
+    }
+    if(event_code == LV_EVENT_VALUE_CHANGED) {
+        IngredientsTextValueChanged(e);
+    }
+}
 void ui_event_Button1(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -125,11 +162,13 @@ void ui_init(void)
     lv_theme_t * theme = lv_theme_default_init(dispp, lv_palette_main(LV_PALETTE_BLUE), lv_palette_main(LV_PALETTE_RED),
                                                false, LV_FONT_DEFAULT);
     lv_disp_set_theme(dispp, theme);
+    ui_Recipe_screen_init();
     ui_Main_screen_init();
     ui_Options_screen_init();
+    ui_Components_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_obj_add_event_cb(ui____initial_actions0, ui_event____initial_actions0, LV_EVENT_ALL, NULL);
 
     lv_disp_load_scr(ui____initial_actions0);
-    lv_disp_load_scr(ui_Main);
+    lv_disp_load_scr(ui_Recipe);
 }

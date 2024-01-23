@@ -10,3 +10,19 @@ def ScanWifi_Clicked(event_struct):
 def WiFiConnect_Clicked(event_struct):
     return
 
+
+def IngredientsKeyboardValueChanged(event_struct):
+    return
+
+
+def IngredientsTextCancel(event_struct):
+    return
+
+
+def IngredientsTextReady(event_struct):
+    return
+
+
+def IngredientsTextValueChanged(event_struct):
+    return
+
