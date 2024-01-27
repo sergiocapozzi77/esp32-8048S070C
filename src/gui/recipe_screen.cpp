@@ -1,7 +1,8 @@
-#include "recipe_screen.h"
-#include "ui/ui.h"
-#include "gui.h"
+#include "recipe_screen.hpp"
+#include "../ingredients.hpp"
 #include <Arduino.h>
+
+RecipeScreen recipeScreen;
 
 void IngredientsTextReady(lv_event_t *e)
 {
@@ -14,18 +15,45 @@ void IngredientsTextReady(lv_event_t *e)
 
 void IngredientsTextValueChanged(lv_event_t *e)
 {
-    Serial.println("IngredientsTextValueChanged");
-    lv_obj_t *ta = lv_event_get_target(e);
-    Serial.println("IngredientsTextValueChanged 1");
-    const char *text = lv_textarea_get_text(ta);
-    Serial.println("IngredientsTextValueChanged 2");
-    if (strlen(text) > 1)
-    {
-        createButtonWithText(ui_IngredientsSuggestionPanel, "Banana");
-    }
+    recipeScreen.IngredientsTextValueChanged(e);
 }
 
-class RecipeScreen
+void suggestedIngredientClicked(lv_event_t *e)
 {
-    const char *ingredients[20] = {"Chicken", "Salmon", "Beef", "Pork", "Avocado", "Apple Cider Vinegar", "Asparagus", "Aubergine", "Baby Plum Tomatoes", "Bacon", "Baking Powder", "Balsamic Vinegar", "Basil", "Basil Leaves", "Basmati Rice"};
-};
+    recipeScreen.SuggestedIngredientClicked(e);
+}
+
+void RecipeScreen::SuggestedIngredientClicked(lv_event_t *e)
+{
+    lv_obj_t *target = lv_event_get_target(e);
+    const char *ingredient = lv_label_get_text(lv_obj_get_child(target, 0));
+    createChip(ui_AvailableIngredientsPanel, ingredient);
+    lv_obj_add_flag(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN); /// Flags
+}
+
+void RecipeScreen::IngredientsTextValueChanged(lv_event_t *e)
+{
+    Serial.println("IngredientsTextValueChanged");
+    lv_obj_t *ta = lv_event_get_target(e);
+    const char *text = lv_textarea_get_text(ta);
+    if (strlen(text) > 1)
+    {
+        std::vector<String> list = ingredients.GetIngredientsStartingWith(text);
+        if (list.size() > 0)
+        {
+            for (int i = 0; i < list.size(); i++)
+            {
+                createButtonWithText(ui_IngredientsSuggestionPanel, list[i].c_str(), suggestedIngredientClicked);
+            }
+            lv_obj_clear_flag(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN); /// Flags
+        }
+        else
+        {
+            lv_obj_add_flag(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN); /// Flags
+        }
+    }
+    else
+    {
+        lv_obj_add_flag(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN); /// Flags
+    }
+}

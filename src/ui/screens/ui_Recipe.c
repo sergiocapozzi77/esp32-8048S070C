@@ -21,11 +21,20 @@ void ui_Recipe_screen_init(void)
 
 
 
+    ui_AvailableIngredientsPanel = lv_obj_create(ui_Recipe);
+    lv_obj_set_width(ui_AvailableIngredientsPanel, 764);
+    lv_obj_set_height(ui_AvailableIngredientsPanel, 63);
+    lv_obj_set_x(ui_AvailableIngredientsPanel, -1);
+    lv_obj_set_y(ui_AvailableIngredientsPanel, -127);
+    lv_obj_set_align(ui_AvailableIngredientsPanel, LV_ALIGN_CENTER);
+    lv_obj_set_flex_flow(ui_AvailableIngredientsPanel, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(ui_AvailableIngredientsPanel, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+
     ui_IngredientsKeyboard = lv_keyboard_create(ui_Recipe);
-    lv_obj_set_width(ui_IngredientsKeyboard, 745);
+    lv_obj_set_width(ui_IngredientsKeyboard, 499);
     lv_obj_set_height(ui_IngredientsKeyboard, 264);
-    lv_obj_set_x(ui_IngredientsKeyboard, 0);
-    lv_obj_set_y(ui_IngredientsKeyboard, 40);
+    lv_obj_set_x(ui_IngredientsKeyboard, 116);
+    lv_obj_set_y(ui_IngredientsKeyboard, -11);
     lv_obj_set_align(ui_IngredientsKeyboard, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_IngredientsKeyboard, LV_OBJ_FLAG_HIDDEN);     /// Flags
 
@@ -37,6 +46,7 @@ void ui_Recipe_screen_init(void)
     lv_obj_set_align(ui_IngredientsSuggestionPanel, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_IngredientsSuggestionPanel, LV_FLEX_FLOW_COLUMN);
     lv_obj_set_flex_align(ui_IngredientsSuggestionPanel, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+    lv_obj_add_flag(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN);     /// Flags
 
     lv_obj_add_event_cb(ui_IngredientText, ui_event_IngredientText, LV_EVENT_ALL, NULL);
     lv_keyboard_set_textarea(ui_IngredientsKeyboard, ui_IngredientText);

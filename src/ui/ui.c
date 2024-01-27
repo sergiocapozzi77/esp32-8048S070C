@@ -14,6 +14,7 @@ void ui_Recipe_screen_init(void);
 lv_obj_t * ui_Recipe;
 void ui_event_IngredientText(lv_event_t * e);
 lv_obj_t * ui_IngredientText;
+lv_obj_t * ui_AvailableIngredientsPanel;
 lv_obj_t * ui_IngredientsKeyboard;
 lv_obj_t * ui_IngredientsSuggestionPanel;
 

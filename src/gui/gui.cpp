@@ -108,7 +108,7 @@ lv_obj_t *createRecipeItem(lv_img_dsc_t *img)
   return recipeItem;
 }
 
-lv_obj_t *createButtonWithText(lv_obj_t *parent, const char *text)
+lv_obj_t *createButtonWithText(lv_obj_t *parent, const char *text, void (*ui_event_click)(lv_event_t *e))
 {
   lv_obj_t *ui_SuggestionButton = lv_btn_create(parent);
   lv_obj_set_width(ui_SuggestionButton, 168);
@@ -132,6 +132,7 @@ lv_obj_t *createButtonWithText(lv_obj_t *parent, const char *text)
   lv_label_set_text(ui_SuggestionText, text);
   lv_obj_set_style_text_color(ui_SuggestionText, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
   lv_obj_set_style_text_opa(ui_SuggestionText, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+  lv_obj_add_event_cb(ui_SuggestionButton, ui_event_click, LV_EVENT_CLICKED, NULL);
   return ui_SuggestionButton;
 }
 
