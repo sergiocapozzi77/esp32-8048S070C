@@ -50,5 +50,6 @@ void ui_Recipe_screen_init(void)
 
     lv_obj_add_event_cb(ui_IngredientText, ui_event_IngredientText, LV_EVENT_ALL, NULL);
     lv_keyboard_set_textarea(ui_IngredientsKeyboard, ui_IngredientText);
+    lv_obj_add_event_cb(ui_IngredientsSuggestionPanel, ui_event_IngredientsSuggestionPanel, LV_EVENT_ALL, NULL);
 
 }

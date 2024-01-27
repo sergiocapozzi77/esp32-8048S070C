@@ -16,6 +16,7 @@ void ui_event_IngredientText(lv_event_t * e);
 lv_obj_t * ui_IngredientText;
 lv_obj_t * ui_AvailableIngredientsPanel;
 lv_obj_t * ui_IngredientsKeyboard;
+void ui_event_IngredientsSuggestionPanel(lv_event_t * e);
 lv_obj_t * ui_IngredientsSuggestionPanel;
 
 
@@ -91,6 +92,14 @@ void ui_event_IngredientText(lv_event_t * e)
     }
     if(event_code == LV_EVENT_VALUE_CHANGED) {
         IngredientsTextValueChanged(e);
+    }
+}
+void ui_event_IngredientsSuggestionPanel(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_FOCUSED) {
+        _ui_flag_modify(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
     }
 }
 void ui_event_Button1(lv_event_t * e)
