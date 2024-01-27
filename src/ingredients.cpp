@@ -6,7 +6,7 @@ Ingredients::Ingredients()
 {
     for (int i = 0; i < ARRAYSIZE; i++)
     {
-        ingredients->toLowerCase();
+        ingredients[i].toLowerCase();
     }
 }
 

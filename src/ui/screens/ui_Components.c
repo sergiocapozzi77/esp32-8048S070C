@@ -76,6 +76,10 @@ void ui_Components_screen_init(void)
     lv_obj_set_style_bg_opa(ui_SuggestionButton, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_shadow_width(ui_SuggestionButton, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_shadow_spread(ui_SuggestionButton, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_SuggestionButton, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_SuggestionButton, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_SuggestionButton, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_SuggestionButton, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_SuggestionText = lv_label_create(ui_SuggestionButton);
     lv_obj_set_width(ui_SuggestionText, LV_SIZE_CONTENT);   /// 1

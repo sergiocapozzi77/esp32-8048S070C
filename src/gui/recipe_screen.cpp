@@ -29,6 +29,7 @@ void RecipeScreen::SuggestedIngredientClicked(lv_event_t *e)
     const char *ingredient = lv_label_get_text(lv_obj_get_child(target, 0));
     createChip(ui_AvailableIngredientsPanel, ingredient);
     lv_obj_add_flag(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN); /// Flags
+    lv_textarea_set_text(ui_IngredientText, "");
 }
 
 void RecipeScreen::IngredientsTextValueChanged(lv_event_t *e)
@@ -41,6 +42,7 @@ void RecipeScreen::IngredientsTextValueChanged(lv_event_t *e)
         std::vector<String> list = ingredients.GetIngredientsStartingWith(text);
         if (list.size() > 0)
         {
+            lv_obj_clean(ui_IngredientsSuggestionPanel);
             for (int i = 0; i < list.size(); i++)
             {
                 createButtonWithText(ui_IngredientsSuggestionPanel, list[i].c_str(), suggestedIngredientClicked);

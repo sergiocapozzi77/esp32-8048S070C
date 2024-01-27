@@ -83,6 +83,7 @@ void ui_event_IngredientText(lv_event_t * e)
     }
     if(event_code == LV_EVENT_DEFOCUSED) {
         _ui_flag_modify(ui_IngredientsKeyboard, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+        _ui_flag_modify(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
     }
     if(event_code == LV_EVENT_READY) {
         _ui_flag_modify(ui_IngredientsKeyboard, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);

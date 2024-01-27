@@ -470,6 +470,50 @@
                       }
                     ],
                     "InheritedType": 10
+                  },
+                  {
+                    "nid": -2073463255,
+                    "strtype": "_custom/action",
+                    "strval": "MODIFY FLAG",
+                    "childs": [
+                      {
+                        "nid": 1210111028,
+                        "strtype": "MODIFY FLAG/Name",
+                        "strval": "MODIFY FLAG",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1710658766,
+                        "strtype": "MODIFY FLAG/Call",
+                        "strval": "ModifyFlag( <{Object}>, lv.obj.FLAG.<{Flag}>, \"<{Action}>\")",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": -754358744,
+                        "strtype": "MODIFY FLAG/CallC",
+                        "strval": "_ui_flag_modify( <{Object}>, LV_OBJ_FLAG_<{Flag}>, _UI_MODIFY_FLAG_<{Action}>);",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": -1864555061,
+                        "strtype": "MODIFY FLAG/Object",
+                        "strval": "GUID20727219-537570S710323",
+                        "InheritedType": 9
+                      },
+                      {
+                        "nid": 1384578632,
+                        "strtype": "MODIFY FLAG/Flag",
+                        "strval": "HIDDEN",
+                        "InheritedType": 3
+                      },
+                      {
+                        "nid": -813145246,
+                        "strtype": "MODIFY FLAG/Action",
+                        "strval": "ADD",
+                        "InheritedType": 3
+                      }
+                    ],
+                    "InheritedType": 10
                   }
                 ],
                 "InheritedType": 4
@@ -960,8 +1004,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  116,
-                  -11
+                  118,
+                  52
                 ],
                 "InheritedType": 7
               },
@@ -9276,7 +9320,7 @@
     "theme_color2": 0,
     "uiExportFolderPath": "C:\\Users\\sergi\\Source\\Repos\\esp32-8048S070C\\src\\ui",
     "projectExportFolderPath": ".\\",
-    "backup_cnt": 180,
+    "backup_cnt": 183,
     "autosave_cnt": 0,
     "lvgl_version": "8.2.0",
     "callfuncsexport": "C_FILE",

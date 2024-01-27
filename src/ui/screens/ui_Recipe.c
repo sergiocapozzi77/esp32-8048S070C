@@ -33,8 +33,8 @@ void ui_Recipe_screen_init(void)
     ui_IngredientsKeyboard = lv_keyboard_create(ui_Recipe);
     lv_obj_set_width(ui_IngredientsKeyboard, 499);
     lv_obj_set_height(ui_IngredientsKeyboard, 264);
-    lv_obj_set_x(ui_IngredientsKeyboard, 116);
-    lv_obj_set_y(ui_IngredientsKeyboard, -11);
+    lv_obj_set_x(ui_IngredientsKeyboard, 118);
+    lv_obj_set_y(ui_IngredientsKeyboard, 52);
     lv_obj_set_align(ui_IngredientsKeyboard, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_IngredientsKeyboard, LV_OBJ_FLAG_HIDDEN);     /// Flags
 

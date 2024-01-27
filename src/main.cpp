@@ -7,6 +7,7 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
+#include "secret.h"
 
 // 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
 
@@ -25,7 +26,9 @@ void GetResponse()
   HTTPClient http;
   http.begin("https://api.openai.com/v1/chat/completions");
   http.addHeader("content-type", "application/json");
-  http.addHeader("authorization", "Bearer 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");
+  char bearer[512];
+  snprintf(bearer, sizeof(bearer), "Bearer %s", chatgpt_key);
+  http.addHeader("authorization", bearer);
   http.setTimeout(60000);
 
   DynamicJsonDocument doc(10024);
@@ -80,7 +83,9 @@ lv_img_dsc_t *GetImage(String fileUrl)
 
   http.begin(baseAddress);
   http.addHeader("accept", "application/json");
-  http.addHeader("authorization", "Bearer ea6fa8dd468f479db3e2528d55423b9d27c51622");
+  char bearer[512];
+  snprintf(bearer, sizeof(bearer), "Bearer %s", seatable);
+  http.addHeader("authorization", bearer);
 
   int httpCode = http.GET();
   Serial.println("Get File 1");
