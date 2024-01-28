@@ -10,7 +10,7 @@ class Recipe
 public:
     String title;
     std::vector<String> ingredients;
-    String method;
+    std::vector<String> method;
 };
 
 #endif

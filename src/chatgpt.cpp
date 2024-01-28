@@ -2,11 +2,12 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 #include "secret.h"
+#include <vector>
 
 ChatGpt chatGpt;
 
 // const char *ChatGpt::GetRecipe(String ingredients[])
-Recipe *ChatGpt::GetRecipes()
+Recipe *ChatGpt::GetRecipes(std::vector<String> ingredients)
 {
   Serial.println("Getting recipe");
   HTTPClient http;
@@ -24,7 +25,24 @@ Recipe *ChatGpt::GetRecipes()
   JsonArray messages = doc["messages"].to<JsonArray>();
   JsonObject message = messages.createNestedObject();
   message["role"] = "user";
-  message["content"] = "Can you suggest 3 recipes if I only have pancetta passata pasta and return the response as an array of recipes in json? Split each recipe by title as a string, ingredients as an array and method as a string.";
+
+  String availableIngredients = "";
+  if (ingredients.size() == 0)
+  {
+    availableIngredients = "pancetta,passata,pasta";
+  }
+  else
+  {
+    for (int i = 0; i < ingredients.size(); i++)
+    {
+      availableIngredients = availableIngredients + ingredients[i] + String(",");
+    }
+  }
+
+  Serial.print("Available ingredents: ");
+  Serial.println(availableIngredients);
+
+  message["content"] = String("Can you suggest 3 recipes if I only have ") + availableIngredients + String(" and return the response as an array of recipes in json? Split each recipe by title as a string, ingredients as an array and method as an array.");
   doc["temperature"] = 0.7;
   int jsonSize = measureJson(doc);
 
@@ -88,16 +106,16 @@ Recipe *ChatGpt::GetRecipes()
             }
 
             ret[r].title = recipes[r]["title"].as<String>();
-            ret[r].method = recipes[r]["method"].as<String>();
-            Serial.print("Ingredients: ");
-            Serial.println(recipes[r]["ingredients"].as<String>());
             JsonArray ingredients = recipes[r]["ingredients"].as<JsonArray>();
-            Serial.print("Ingredient size: ");
-            Serial.println(ingredients.size());
             for (int n = 0; n < ingredients.size(); n++)
             {
-              Serial.println(ingredients[n].as<String>());
               ret[r].ingredients.push_back(ingredients[n].as<String>());
+            }
+
+            JsonArray method = recipes[r]["method"].as<JsonArray>();
+            for (int n = 0; n < method.size(); n++)
+            {
+              ret[r].method.push_back(method[n].as<String>());
             }
 
             Serial.print("Recipe ");

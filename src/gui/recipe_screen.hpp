@@ -6,6 +6,7 @@
 #include "ui/ui.h"
 #include <vector>
 #include <Arduino.h>
+#include "models/recipe.hpp"
 
 class RecipeScreen
 {
@@ -13,8 +14,10 @@ class RecipeScreen
     std::vector<String> availableIngredients;
 
 public:
+    std::vector<String> GetAvailableIngredients() { return availableIngredients; }
     void SuggestedIngredientClicked(lv_event_t *e);
     void IngredientsTextValueChanged(lv_event_t *e);
+    void SetRecipe(Recipe *recipe, lv_obj_t *title, lv_obj_t *ingredients);
 };
 
 extern RecipeScreen recipeScreen;

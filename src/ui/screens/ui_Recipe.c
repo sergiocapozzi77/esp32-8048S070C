@@ -33,16 +33,9 @@ void ui_Recipe_screen_init(void)
     lv_obj_set_align(ui_AvailableIngredientsPanel, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_AvailableIngredientsPanel, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(ui_AvailableIngredientsPanel, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+    lv_obj_set_scroll_dir(ui_AvailableIngredientsPanel, LV_DIR_HOR);
     lv_obj_set_style_border_color(ui_AvailableIngredientsPanel, lv_color_hex(0x909090), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_opa(ui_AvailableIngredientsPanel, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    ui_IngredientsKeyboard = lv_keyboard_create(ui_Recipe);
-    lv_obj_set_width(ui_IngredientsKeyboard, 788);
-    lv_obj_set_height(ui_IngredientsKeyboard, 264);
-    lv_obj_set_x(ui_IngredientsKeyboard, -3);
-    lv_obj_set_y(ui_IngredientsKeyboard, 103);
-    lv_obj_set_align(ui_IngredientsKeyboard, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_IngredientsKeyboard, LV_OBJ_FLAG_HIDDEN);     /// Flags
 
     ui_IngredientsSuggestionPanel = lv_obj_create(ui_Recipe);
     lv_obj_set_width(ui_IngredientsSuggestionPanel, 235);
@@ -63,17 +56,17 @@ void ui_Recipe_screen_init(void)
     lv_obj_add_flag(ui_GetRecipeButton, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_GetRecipeButton, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-    ui_Label2 = lv_label_create(ui_GetRecipeButton);
-    lv_obj_set_width(ui_Label2, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label2, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_align(ui_Label2, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label2, "Get Recipe");
+    ui_GetRecipesLbl = lv_label_create(ui_GetRecipeButton);
+    lv_obj_set_width(ui_GetRecipesLbl, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_GetRecipesLbl, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_GetRecipesLbl, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_GetRecipesLbl, "Get Recipes");
 
     ui_PanelRecipe0 = lv_obj_create(ui_Recipe);
-    lv_obj_set_width(ui_PanelRecipe0, 266);
+    lv_obj_set_width(ui_PanelRecipe0, 251);
     lv_obj_set_height(ui_PanelRecipe0, 248);
-    lv_obj_set_x(ui_PanelRecipe0, -250);
-    lv_obj_set_y(ui_PanelRecipe0, 93);
+    lv_obj_set_x(ui_PanelRecipe0, -263);
+    lv_obj_set_y(ui_PanelRecipe0, 108);
     lv_obj_set_align(ui_PanelRecipe0, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_PanelRecipe0, LV_FLEX_FLOW_COLUMN);
     lv_obj_set_flex_align(ui_PanelRecipe0, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
@@ -84,40 +77,211 @@ void ui_Recipe_screen_init(void)
     lv_obj_set_style_pad_bottom(ui_PanelRecipe0, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_RecipeTitle0 = lv_label_create(ui_PanelRecipe0);
-    lv_obj_set_width(ui_RecipeTitle0, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_RecipeTitle0, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_height(ui_RecipeTitle0, 34);
+    lv_obj_set_width(ui_RecipeTitle0, lv_pct(100));
     lv_obj_set_align(ui_RecipeTitle0, LV_ALIGN_CENTER);
-    lv_label_set_long_mode(ui_RecipeTitle0, LV_LABEL_LONG_SCROLL);
-    lv_label_set_text(ui_RecipeTitle0, "ewr wer ");
+    lv_label_set_text(ui_RecipeTitle0, "");
     lv_obj_set_style_text_font(ui_RecipeTitle0, &lv_font_montserrat_16, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_left(ui_RecipeTitle0, 5, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui_RecipeTitle0, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_RecipeTitle0, 5, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_top(ui_RecipeTitle0, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_bottom(ui_RecipeTitle0, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_PanelIngredients = lv_obj_create(ui_PanelRecipe0);
     lv_obj_set_width(ui_PanelIngredients, lv_pct(100));
-    lv_obj_set_height(ui_PanelIngredients, lv_pct(85));
+    lv_obj_set_height(ui_PanelIngredients, lv_pct(63));
     lv_obj_set_align(ui_PanelIngredients, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_PanelIngredients, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(ui_PanelIngredients, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
     lv_obj_set_style_border_width(ui_PanelIngredients, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_left(ui_PanelIngredients, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui_PanelIngredients, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_PanelIngredients, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_top(ui_PanelIngredients, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_bottom(ui_PanelIngredients, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_RecipeIngredients0 = lv_label_create(ui_PanelIngredients);
-    lv_obj_set_width(ui_RecipeIngredients0, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_width(ui_RecipeIngredients0, lv_pct(100));
     lv_obj_set_height(ui_RecipeIngredients0, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_RecipeIngredients0, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_RecipeIngredients0,
-                      "sdfsdf\nsdf\nsdfsdfsd\nfsd\nfs\ndf\nsd\nf\ndsffsdf\ndsfsd\n\nsdf\nsd\nf\nsd\nf");
+    lv_label_set_text(ui_RecipeIngredients0, "");
+
+    ui_PanelIngredientsButton = lv_obj_create(ui_PanelRecipe0);
+    lv_obj_set_width(ui_PanelIngredientsButton, lv_pct(100));
+    lv_obj_set_height(ui_PanelIngredientsButton, lv_pct(13));
+    lv_obj_set_align(ui_PanelIngredientsButton, LV_ALIGN_CENTER);
+    lv_obj_set_flex_flow(ui_PanelIngredientsButton, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(ui_PanelIngredientsButton, LV_FLEX_ALIGN_END, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
+    lv_obj_set_style_border_width(ui_PanelIngredientsButton, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_PanelIngredientsButton, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_PanelIngredientsButton, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_PanelIngredientsButton, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_PanelIngredientsButton, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_RecipeSelectBtn = lv_btn_create(ui_PanelIngredientsButton);
+    lv_obj_set_width(ui_RecipeSelectBtn, 100);
+    lv_obj_set_height(ui_RecipeSelectBtn, 28);
+    lv_obj_set_align(ui_RecipeSelectBtn, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_RecipeSelectBtn, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_RecipeSelectBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+
+    ui_SelectLbl = lv_label_create(ui_RecipeSelectBtn);
+    lv_obj_set_width(ui_SelectLbl, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_SelectLbl, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_SelectLbl, LV_ALIGN_CENTER);
+    lv_label_set_long_mode(ui_SelectLbl, LV_LABEL_LONG_CLIP);
+    lv_label_set_text(ui_SelectLbl, "Select");
+
+    ui_PanelRecipe1 = lv_obj_create(ui_Recipe);
+    lv_obj_set_width(ui_PanelRecipe1, 251);
+    lv_obj_set_height(ui_PanelRecipe1, 248);
+    lv_obj_set_x(ui_PanelRecipe1, -1);
+    lv_obj_set_y(ui_PanelRecipe1, 110);
+    lv_obj_set_align(ui_PanelRecipe1, LV_ALIGN_CENTER);
+    lv_obj_set_flex_flow(ui_PanelRecipe1, LV_FLEX_FLOW_COLUMN);
+    lv_obj_set_flex_align(ui_PanelRecipe1, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
+    lv_obj_clear_flag(ui_PanelRecipe1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_pad_left(ui_PanelRecipe1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_PanelRecipe1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_PanelRecipe1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_PanelRecipe1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_RecipeTitle1 = lv_label_create(ui_PanelRecipe1);
+    lv_obj_set_width(ui_RecipeTitle1, lv_pct(100));
+    lv_obj_set_height(ui_RecipeTitle1, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_RecipeTitle1, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_RecipeTitle1, "");
+    lv_obj_set_style_text_font(ui_RecipeTitle1, &lv_font_montserrat_16, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_RecipeTitle1, 5, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_RecipeTitle1, 5, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_RecipeTitle1, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_RecipeTitle1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_PanelIngredients1 = lv_obj_create(ui_PanelRecipe1);
+    lv_obj_set_width(ui_PanelIngredients1, lv_pct(100));
+    lv_obj_set_height(ui_PanelIngredients1, lv_pct(68));
+    lv_obj_set_align(ui_PanelIngredients1, LV_ALIGN_CENTER);
+    lv_obj_set_flex_flow(ui_PanelIngredients1, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(ui_PanelIngredients1, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
+    lv_obj_set_style_border_width(ui_PanelIngredients1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_PanelIngredients1, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_PanelIngredients1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_PanelIngredients1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_PanelIngredients1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_RecipeIngredients1 = lv_label_create(ui_PanelIngredients1);
+    lv_obj_set_width(ui_RecipeIngredients1, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_RecipeIngredients1, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_RecipeIngredients1, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_RecipeIngredients1, "");
+
+    ui_PanelIngredientsButton1 = lv_obj_create(ui_PanelRecipe1);
+    lv_obj_set_width(ui_PanelIngredientsButton1, lv_pct(100));
+    lv_obj_set_height(ui_PanelIngredientsButton1, lv_pct(13));
+    lv_obj_set_align(ui_PanelIngredientsButton1, LV_ALIGN_CENTER);
+    lv_obj_set_flex_flow(ui_PanelIngredientsButton1, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(ui_PanelIngredientsButton1, LV_FLEX_ALIGN_END, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
+    lv_obj_set_style_border_width(ui_PanelIngredientsButton1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_PanelIngredientsButton1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_PanelIngredientsButton1, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_PanelIngredientsButton1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_PanelIngredientsButton1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_RecipeSelectBtn1 = lv_btn_create(ui_PanelIngredientsButton1);
+    lv_obj_set_width(ui_RecipeSelectBtn1, 100);
+    lv_obj_set_height(ui_RecipeSelectBtn1, 28);
+    lv_obj_set_align(ui_RecipeSelectBtn1, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_RecipeSelectBtn1, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_RecipeSelectBtn1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+
+    ui_SelectLbl1 = lv_label_create(ui_RecipeSelectBtn1);
+    lv_obj_set_width(ui_SelectLbl1, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_SelectLbl1, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_SelectLbl1, LV_ALIGN_CENTER);
+    lv_label_set_long_mode(ui_SelectLbl1, LV_LABEL_LONG_CLIP);
+    lv_label_set_text(ui_SelectLbl1, "Select");
+
+    ui_PanelRecipe2 = lv_obj_create(ui_Recipe);
+    lv_obj_set_width(ui_PanelRecipe2, 251);
+    lv_obj_set_height(ui_PanelRecipe2, 248);
+    lv_obj_set_x(ui_PanelRecipe2, 262);
+    lv_obj_set_y(ui_PanelRecipe2, 108);
+    lv_obj_set_align(ui_PanelRecipe2, LV_ALIGN_CENTER);
+    lv_obj_set_flex_flow(ui_PanelRecipe2, LV_FLEX_FLOW_COLUMN);
+    lv_obj_set_flex_align(ui_PanelRecipe2, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
+    lv_obj_clear_flag(ui_PanelRecipe2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_pad_left(ui_PanelRecipe2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_PanelRecipe2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_PanelRecipe2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_PanelRecipe2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_RecipeTitle2 = lv_label_create(ui_PanelRecipe2);
+    lv_obj_set_width(ui_RecipeTitle2, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_RecipeTitle2, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_RecipeTitle2, LV_ALIGN_CENTER);
+    lv_label_set_long_mode(ui_RecipeTitle2, LV_LABEL_LONG_SCROLL);
+    lv_label_set_text(ui_RecipeTitle2, "");
+    lv_obj_set_style_text_font(ui_RecipeTitle2, &lv_font_montserrat_16, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_RecipeTitle2, 5, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_RecipeTitle2, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_RecipeTitle2, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_RecipeTitle2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_PanelIngredients2 = lv_obj_create(ui_PanelRecipe2);
+    lv_obj_set_width(ui_PanelIngredients2, lv_pct(100));
+    lv_obj_set_height(ui_PanelIngredients2, lv_pct(68));
+    lv_obj_set_align(ui_PanelIngredients2, LV_ALIGN_CENTER);
+    lv_obj_set_flex_flow(ui_PanelIngredients2, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(ui_PanelIngredients2, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
+    lv_obj_set_style_border_width(ui_PanelIngredients2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_PanelIngredients2, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_PanelIngredients2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_PanelIngredients2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_PanelIngredients2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_RecipeIngredients2 = lv_label_create(ui_PanelIngredients2);
+    lv_obj_set_width(ui_RecipeIngredients2, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_RecipeIngredients2, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_RecipeIngredients2, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_RecipeIngredients2, "");
+
+    ui_PanelIngredientsButton2 = lv_obj_create(ui_PanelRecipe2);
+    lv_obj_set_width(ui_PanelIngredientsButton2, lv_pct(100));
+    lv_obj_set_height(ui_PanelIngredientsButton2, lv_pct(13));
+    lv_obj_set_align(ui_PanelIngredientsButton2, LV_ALIGN_CENTER);
+    lv_obj_set_flex_flow(ui_PanelIngredientsButton2, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(ui_PanelIngredientsButton2, LV_FLEX_ALIGN_END, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
+    lv_obj_set_style_border_width(ui_PanelIngredientsButton2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_PanelIngredientsButton2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_PanelIngredientsButton2, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_PanelIngredientsButton2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_PanelIngredientsButton2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_RecipeSelectBtn2 = lv_btn_create(ui_PanelIngredientsButton2);
+    lv_obj_set_width(ui_RecipeSelectBtn2, 100);
+    lv_obj_set_height(ui_RecipeSelectBtn2, 28);
+    lv_obj_set_align(ui_RecipeSelectBtn2, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_RecipeSelectBtn2, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_RecipeSelectBtn2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+
+    ui_SelectLbl2 = lv_label_create(ui_RecipeSelectBtn2);
+    lv_obj_set_width(ui_SelectLbl2, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_SelectLbl2, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_SelectLbl2, LV_ALIGN_CENTER);
+    lv_label_set_long_mode(ui_SelectLbl2, LV_LABEL_LONG_CLIP);
+    lv_label_set_text(ui_SelectLbl2, "Select");
+
+    ui_IngredientsKeyboard = lv_keyboard_create(ui_Recipe);
+    lv_obj_set_width(ui_IngredientsKeyboard, 788);
+    lv_obj_set_height(ui_IngredientsKeyboard, 264);
+    lv_obj_set_x(ui_IngredientsKeyboard, -3);
+    lv_obj_set_y(ui_IngredientsKeyboard, 103);
+    lv_obj_set_align(ui_IngredientsKeyboard, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_IngredientsKeyboard, LV_OBJ_FLAG_HIDDEN);     /// Flags
 
     lv_obj_add_event_cb(ui_IngredientText, ui_event_IngredientText, LV_EVENT_ALL, NULL);
-    lv_keyboard_set_textarea(ui_IngredientsKeyboard, ui_IngredientText);
     lv_obj_add_event_cb(ui_IngredientsSuggestionPanel, ui_event_IngredientsSuggestionPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_GetRecipeButton, ui_event_GetRecipeButton, LV_EVENT_ALL, NULL);
+    lv_keyboard_set_textarea(ui_IngredientsKeyboard, ui_IngredientText);
     lv_obj_add_event_cb(ui_Recipe, ui_event_Recipe, LV_EVENT_ALL, NULL);
 
 }

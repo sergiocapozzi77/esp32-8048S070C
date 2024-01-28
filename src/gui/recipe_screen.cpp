@@ -19,30 +19,15 @@ void GetRecipeButtonClicked(lv_event_t *e)
 {
     Serial.println("Getting recipe button click");
 
-    Recipe *recipes = chatGpt.GetRecipes();
+    Recipe *recipes = chatGpt.GetRecipes(recipeScreen.GetAvailableIngredients());
     if (recipes == NULL)
     {
         return;
     }
 
-    SetRecipe(&recipes[0], ui_RecipeTitle0, ui_RecipeIngredients0);
-    SetRecipe(&recipes[1], ui_RecipeTitle1, ui_RecipeIngredients1);
-}
-
-void SetRecipe(Recipe *recipe, lv_obj_t *title, lv_obj_t *ingredients)
-{
-    lv_label_set_text(title, recipe->title.c_str());
-
-    String allIngredients = "";
-    for (int i = 0; i < recipe->ingredients.size(); i++)
-    {
-        allIngredients = allIngredients + recipe->ingredients[i] + String("\n");
-    }
-
-    Serial.println("------ all ingredients ----");
-    Serial.println(allIngredients);
-
-    lv_label_set_text(ingredients, allIngredients.c_str());
+    recipeScreen.SetRecipe(&recipes[0], ui_RecipeTitle0, ui_RecipeIngredients0);
+    recipeScreen.SetRecipe(&recipes[1], ui_RecipeTitle1, ui_RecipeIngredients1);
+    recipeScreen.SetRecipe(&recipes[2], ui_RecipeTitle2, ui_RecipeIngredients2);
 }
 
 void IngredientsTextValueChanged(lv_event_t *e)
@@ -64,6 +49,29 @@ void RecipeScreen::SuggestedIngredientClicked(lv_event_t *e)
     lv_textarea_set_text(ui_IngredientText, "");
 
     this->availableIngredients.push_back(String(ingredient));
+}
+
+void RecipeScreen::SetRecipe(Recipe *recipe, lv_obj_t *title, lv_obj_t *ingredients)
+{
+    lv_label_set_text(title, recipe->title.c_str());
+
+    String allIngredients = "Ingredients:\n\n";
+    for (int i = 0; i < recipe->ingredients.size(); i++)
+    {
+        allIngredients = allIngredients + recipe->ingredients[i] + String("\n");
+    }
+
+    allIngredients += "\n\nMethod:\n\n";
+
+    for (int i = 0; i < recipe->method.size(); i++)
+    {
+        allIngredients = allIngredients + recipe->method[i] + String("\n");
+    }
+
+    Serial.println("------ all ingredients ----");
+    Serial.println(allIngredients);
+
+    lv_label_set_text(ingredients, allIngredients.c_str());
 }
 
 void RecipeScreen::IngredientsTextValueChanged(lv_event_t *e)

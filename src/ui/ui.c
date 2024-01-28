@@ -16,16 +16,33 @@ lv_obj_t * ui_Recipe;
 void ui_event_IngredientText(lv_event_t * e);
 lv_obj_t * ui_IngredientText;
 lv_obj_t * ui_AvailableIngredientsPanel;
-lv_obj_t * ui_IngredientsKeyboard;
 void ui_event_IngredientsSuggestionPanel(lv_event_t * e);
 lv_obj_t * ui_IngredientsSuggestionPanel;
 void ui_event_GetRecipeButton(lv_event_t * e);
 lv_obj_t * ui_GetRecipeButton;
-lv_obj_t * ui_Label2;
+lv_obj_t * ui_GetRecipesLbl;
 lv_obj_t * ui_PanelRecipe0;
 lv_obj_t * ui_RecipeTitle0;
 lv_obj_t * ui_PanelIngredients;
 lv_obj_t * ui_RecipeIngredients0;
+lv_obj_t * ui_PanelIngredientsButton;
+lv_obj_t * ui_RecipeSelectBtn;
+lv_obj_t * ui_SelectLbl;
+lv_obj_t * ui_PanelRecipe1;
+lv_obj_t * ui_RecipeTitle1;
+lv_obj_t * ui_PanelIngredients1;
+lv_obj_t * ui_RecipeIngredients1;
+lv_obj_t * ui_PanelIngredientsButton1;
+lv_obj_t * ui_RecipeSelectBtn1;
+lv_obj_t * ui_SelectLbl1;
+lv_obj_t * ui_PanelRecipe2;
+lv_obj_t * ui_RecipeTitle2;
+lv_obj_t * ui_PanelIngredients2;
+lv_obj_t * ui_RecipeIngredients2;
+lv_obj_t * ui_PanelIngredientsButton2;
+lv_obj_t * ui_RecipeSelectBtn2;
+lv_obj_t * ui_SelectLbl2;
+lv_obj_t * ui_IngredientsKeyboard;
 
 
 // SCREEN: ui_Main
