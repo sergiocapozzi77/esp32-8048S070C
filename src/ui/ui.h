@@ -26,6 +26,7 @@ extern "C" {
 #include "ui_events.h"
 // SCREEN: ui_Recipe
 void ui_Recipe_screen_init(void);
+void ui_event_Recipe(lv_event_t * e);
 extern lv_obj_t * ui_Recipe;
 void ui_event_IngredientText(lv_event_t * e);
 extern lv_obj_t * ui_IngredientText;
@@ -33,6 +34,9 @@ extern lv_obj_t * ui_AvailableIngredientsPanel;
 extern lv_obj_t * ui_IngredientsKeyboard;
 void ui_event_IngredientsSuggestionPanel(lv_event_t * e);
 extern lv_obj_t * ui_IngredientsSuggestionPanel;
+void ui_event_GetRecipeButton(lv_event_t * e);
+extern lv_obj_t * ui_GetRecipeButton;
+extern lv_obj_t * ui_Label2;
 // SCREEN: ui_Main
 void ui_Main_screen_init(void);
 extern lv_obj_t * ui_Main;

@@ -26,3 +26,7 @@ def IngredientsTextReady(event_struct):
 def IngredientsTextValueChanged(event_struct):
     return
 
+
+def GetRecipeButtonClicked(event_struct):
+    return
+

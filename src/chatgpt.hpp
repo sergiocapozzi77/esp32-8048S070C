@@ -3,12 +3,14 @@
 #define CHATGPT_H
 
 #include <Arduino.h>
+#include "models/recipe.hpp"
 
 class ChatGpt
 {
 
 public:
-    const char *GetRecipe(String ingredients[]);
+    // const char *GetRecipe(String ingredients[]);
+    Recipe *GetRecipes();
 };
 
 extern ChatGpt chatGpt;

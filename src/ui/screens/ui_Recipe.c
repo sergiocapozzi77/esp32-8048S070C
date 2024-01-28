@@ -13,43 +13,66 @@ void ui_Recipe_screen_init(void)
     ui_IngredientText = lv_textarea_create(ui_Recipe);
     lv_obj_set_width(ui_IngredientText, 770);
     lv_obj_set_height(ui_IngredientText, LV_SIZE_CONTENT);    /// 70
-    lv_obj_set_x(ui_IngredientText, 1);
-    lv_obj_set_y(ui_IngredientText, -188);
+    lv_obj_set_x(ui_IngredientText, 0);
+    lv_obj_set_y(ui_IngredientText, -205);
     lv_obj_set_align(ui_IngredientText, LV_ALIGN_CENTER);
     lv_textarea_set_placeholder_text(ui_IngredientText, "Ingredient...");
     lv_textarea_set_one_line(ui_IngredientText, true);
+    lv_obj_set_style_border_color(ui_IngredientText, lv_color_hex(0x909090), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_opa(ui_IngredientText, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
 
+    lv_obj_set_style_text_color(ui_IngredientText, lv_color_hex(0x4F4F4F), LV_PART_TEXTAREA_PLACEHOLDER | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_IngredientText, 255, LV_PART_TEXTAREA_PLACEHOLDER | LV_STATE_DEFAULT);
 
     ui_AvailableIngredientsPanel = lv_obj_create(ui_Recipe);
     lv_obj_set_width(ui_AvailableIngredientsPanel, 764);
-    lv_obj_set_height(ui_AvailableIngredientsPanel, 63);
-    lv_obj_set_x(ui_AvailableIngredientsPanel, -1);
-    lv_obj_set_y(ui_AvailableIngredientsPanel, -127);
+    lv_obj_set_height(ui_AvailableIngredientsPanel, 73);
+    lv_obj_set_x(ui_AvailableIngredientsPanel, 0);
+    lv_obj_set_y(ui_AvailableIngredientsPanel, -142);
     lv_obj_set_align(ui_AvailableIngredientsPanel, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_AvailableIngredientsPanel, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(ui_AvailableIngredientsPanel, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+    lv_obj_set_style_border_color(ui_AvailableIngredientsPanel, lv_color_hex(0x909090), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_opa(ui_AvailableIngredientsPanel, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_IngredientsKeyboard = lv_keyboard_create(ui_Recipe);
-    lv_obj_set_width(ui_IngredientsKeyboard, 499);
+    lv_obj_set_width(ui_IngredientsKeyboard, 788);
     lv_obj_set_height(ui_IngredientsKeyboard, 264);
-    lv_obj_set_x(ui_IngredientsKeyboard, 118);
-    lv_obj_set_y(ui_IngredientsKeyboard, 52);
+    lv_obj_set_x(ui_IngredientsKeyboard, -3);
+    lv_obj_set_y(ui_IngredientsKeyboard, 103);
     lv_obj_set_align(ui_IngredientsKeyboard, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_IngredientsKeyboard, LV_OBJ_FLAG_HIDDEN);     /// Flags
 
     ui_IngredientsSuggestionPanel = lv_obj_create(ui_Recipe);
     lv_obj_set_width(ui_IngredientsSuggestionPanel, 235);
-    lv_obj_set_height(ui_IngredientsSuggestionPanel, 209);
-    lv_obj_set_x(ui_IngredientsSuggestionPanel, -267);
-    lv_obj_set_y(ui_IngredientsSuggestionPanel, -59);
+    lv_obj_set_height(ui_IngredientsSuggestionPanel, 149);
+    lv_obj_set_x(ui_IngredientsSuggestionPanel, -263);
+    lv_obj_set_y(ui_IngredientsSuggestionPanel, -107);
     lv_obj_set_align(ui_IngredientsSuggestionPanel, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_IngredientsSuggestionPanel, LV_FLEX_FLOW_COLUMN);
     lv_obj_set_flex_align(ui_IngredientsSuggestionPanel, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
     lv_obj_add_flag(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN);     /// Flags
 
+    ui_GetRecipeButton = lv_btn_create(ui_Recipe);
+    lv_obj_set_width(ui_GetRecipeButton, 100);
+    lv_obj_set_height(ui_GetRecipeButton, 50);
+    lv_obj_set_x(ui_GetRecipeButton, 330);
+    lv_obj_set_y(ui_GetRecipeButton, -63);
+    lv_obj_set_align(ui_GetRecipeButton, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_GetRecipeButton, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_GetRecipeButton, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+
+    ui_Label2 = lv_label_create(ui_GetRecipeButton);
+    lv_obj_set_width(ui_Label2, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Label2, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_Label2, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_Label2, "Get Recipe");
+
     lv_obj_add_event_cb(ui_IngredientText, ui_event_IngredientText, LV_EVENT_ALL, NULL);
     lv_keyboard_set_textarea(ui_IngredientsKeyboard, ui_IngredientText);
     lv_obj_add_event_cb(ui_IngredientsSuggestionPanel, ui_event_IngredientsSuggestionPanel, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_GetRecipeButton, ui_event_GetRecipeButton, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_Recipe, ui_event_Recipe, LV_EVENT_ALL, NULL);
 
 }
