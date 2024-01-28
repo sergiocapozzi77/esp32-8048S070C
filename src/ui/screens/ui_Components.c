@@ -35,8 +35,8 @@ void ui_Components_screen_init(void)
     lv_label_set_text(ui_RecipeLabel, "Recipe");
 
     ui_ChipPanel = lv_obj_create(ui_Components);
-    lv_obj_set_width(ui_ChipPanel, 100);
     lv_obj_set_height(ui_ChipPanel, 35);
+    lv_obj_set_width(ui_ChipPanel, LV_SIZE_CONTENT);   /// 100
     lv_obj_set_x(ui_ChipPanel, -223);
     lv_obj_set_y(ui_ChipPanel, -14);
     lv_obj_set_align(ui_ChipPanel, LV_ALIGN_CENTER);
@@ -60,7 +60,7 @@ void ui_Components_screen_init(void)
     lv_obj_set_width(ui_ChipText, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_ChipText, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_ChipText, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_ChipText, "dsf ");
+    lv_label_set_text(ui_ChipText, "dsf dsfsd");
 
     ui_SuggestionButton = lv_btn_create(ui_Components);
     lv_obj_set_width(ui_SuggestionButton, 168);

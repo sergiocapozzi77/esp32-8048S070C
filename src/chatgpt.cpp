@@ -24,7 +24,7 @@ Recipe *ChatGpt::GetRecipes()
   JsonArray messages = doc["messages"].to<JsonArray>();
   JsonObject message = messages.createNestedObject();
   message["role"] = "user";
-  message["content"] = "Can you suggest 3 recipes if I only have pancetta passata pasta and return the response in json? Split each recipe by title, ingredients and method.";
+  message["content"] = "Can you suggest 3 recipes if I only have pancetta passata pasta and return the response as an array of recipes in json? Split each recipe by title as a string, ingredients as an array and method as a string.";
   doc["temperature"] = 0.7;
   int jsonSize = measureJson(doc);
 
@@ -89,10 +89,15 @@ Recipe *ChatGpt::GetRecipes()
 
             ret[r].title = recipes[r]["title"].as<String>();
             ret[r].method = recipes[r]["method"].as<String>();
-            JsonArray ingredients = recipes[r]["ingredients"].to<JsonArray>();
-            for (int n = 0; ingredients.size(); n++)
+            Serial.print("Ingredients: ");
+            Serial.println(recipes[r]["ingredients"].as<String>());
+            JsonArray ingredients = recipes[r]["ingredients"].as<JsonArray>();
+            Serial.print("Ingredient size: ");
+            Serial.println(ingredients.size());
+            for (int n = 0; n < ingredients.size(); n++)
             {
-              ret[r].ingredients.push_back(ingredients[n]);
+              Serial.println(ingredients[n].as<String>());
+              ret[r].ingredients.push_back(ingredients[n].as<String>());
             }
 
             Serial.print("Recipe ");

@@ -139,7 +139,7 @@ lv_obj_t *createButtonWithText(lv_obj_t *parent, const char *text, void (*ui_eve
 lv_obj_t *createChip(lv_obj_t *parent, const char *text)
 {
   lv_obj_t *chip = lv_obj_create(parent);
-  lv_obj_set_width(chip, 100);
+  lv_obj_set_width(chip, LV_SIZE_CONTENT); /// 100
   lv_obj_set_height(chip, 35);
   lv_obj_set_align(chip, LV_ALIGN_CENTER);
   lv_obj_set_flex_flow(chip, LV_FLEX_FLOW_ROW);

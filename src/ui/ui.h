@@ -37,6 +37,10 @@ extern lv_obj_t * ui_IngredientsSuggestionPanel;
 void ui_event_GetRecipeButton(lv_event_t * e);
 extern lv_obj_t * ui_GetRecipeButton;
 extern lv_obj_t * ui_Label2;
+extern lv_obj_t * ui_PanelRecipe0;
+extern lv_obj_t * ui_RecipeTitle0;
+extern lv_obj_t * ui_PanelIngredients;
+extern lv_obj_t * ui_RecipeIngredients0;
 // SCREEN: ui_Main
 void ui_Main_screen_init(void);
 extern lv_obj_t * ui_Main;

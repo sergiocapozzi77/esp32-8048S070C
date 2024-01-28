@@ -20,9 +20,29 @@ void GetRecipeButtonClicked(lv_event_t *e)
     Serial.println("Getting recipe button click");
 
     Recipe *recipes = chatGpt.GetRecipes();
-    for (int r = 0; r < 3; r++)
+    if (recipes == NULL)
     {
+        return;
     }
+
+    SetRecipe(&recipes[0], ui_RecipeTitle0, ui_RecipeIngredients0);
+    SetRecipe(&recipes[1], ui_RecipeTitle1, ui_RecipeIngredients1);
+}
+
+void SetRecipe(Recipe *recipe, lv_obj_t *title, lv_obj_t *ingredients)
+{
+    lv_label_set_text(title, recipe->title.c_str());
+
+    String allIngredients = "";
+    for (int i = 0; i < recipe->ingredients.size(); i++)
+    {
+        allIngredients = allIngredients + recipe->ingredients[i] + String("\n");
+    }
+
+    Serial.println("------ all ingredients ----");
+    Serial.println(allIngredients);
+
+    lv_label_set_text(ingredients, allIngredients.c_str());
 }
 
 void IngredientsTextValueChanged(lv_event_t *e)

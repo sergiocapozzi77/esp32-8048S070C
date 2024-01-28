@@ -22,6 +22,10 @@ lv_obj_t * ui_IngredientsSuggestionPanel;
 void ui_event_GetRecipeButton(lv_event_t * e);
 lv_obj_t * ui_GetRecipeButton;
 lv_obj_t * ui_Label2;
+lv_obj_t * ui_PanelRecipe0;
+lv_obj_t * ui_RecipeTitle0;
+lv_obj_t * ui_PanelIngredients;
+lv_obj_t * ui_RecipeIngredients0;
 
 
 // SCREEN: ui_Main
