@@ -17,8 +17,7 @@ void IngredientsTextReady(lv_event_t *e)
 
 void MealChecked(lv_event_t *e)
 {
-    lv_obj_t *target = lv_event_get_current_target(e);
-
+    lv_obj_t *target = lv_event_get_target(e);
     if (target != ui_BreakfastBtn)
     {
         _ui_state_modify(ui_BreakfastBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
@@ -27,17 +26,44 @@ void MealChecked(lv_event_t *e)
     {
         _ui_state_modify(ui_LunchBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     }
+    if (target != ui_SoupBtn)
+    {
+        _ui_state_modify(ui_SoupBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    }
+    if (target != ui_DinnerBtn)
+    {
+        _ui_state_modify(ui_DinnerBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    }
+}
+
+void CuisineChecked(lv_event_t *e)
+{
+    lv_obj_t *target = lv_event_get_target(e);
+    if (target != ui_ItalianBtn)
+    {
+        _ui_state_modify(ui_ItalianBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    }
+    if (target != ui_ThaiBtn)
+    {
+        _ui_state_modify(ui_ThaiBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    }
+    if (target != ui_MexBtn)
+    {
+        _ui_state_modify(ui_MexBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    }
+    if (target != ui_IndianBtn)
+    {
+        _ui_state_modify(ui_IndianBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    }
+    if (target != ui_ChineseBtn)
+    {
+        _ui_state_modify(ui_ChineseBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    }
 }
 
 void GetRecipeButtonClicked(lv_event_t *e)
 {
     Serial.println("Getting recipe button click");
-
-    Recipe *recipes = chatGpt.GetRecipes(recipeScreen.GetAvailableIngredients());
-    if (recipes == NULL)
-    {
-        return;
-    }
 
     // recipeScreen.SetRecipe(&recipes[0], ui_PanelRecipe);
     // recipeScreen.SetRecipe(&recipes[1], ui_PanelRecipe1);

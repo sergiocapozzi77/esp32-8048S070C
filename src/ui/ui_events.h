@@ -14,6 +14,7 @@ void InitialActionsGui(lv_event_t * e);
 void GetRecipeButtonClicked(lv_event_t * e);
 void IngredientsTextReady(lv_event_t * e);
 void IngredientsTextValueChanged(lv_event_t * e);
+void RecipesScreenLoaded(lv_event_t * e);
 void Button_Clicked_1(lv_event_t * e);
 void ScanWifi_Clicked(lv_event_t * e);
 void WiFiConnect_Clicked(lv_event_t * e);

@@ -28,10 +28,7 @@ extern "C" {
 #include "ui_events.h"
 // SCREEN: ui_Recipe
 void ui_Recipe_screen_init(void);
-void ui_event_Recipe(lv_event_t * e);
 extern lv_obj_t * ui_Recipe;
-void ui_event_IngredientsSuggestionPanel(lv_event_t * e);
-extern lv_obj_t * ui_IngredientsSuggestionPanel;
 void ui_event_GetRecipeButton(lv_event_t * e);
 extern lv_obj_t * ui_GetRecipeButton;
 extern lv_obj_t * ui_GetRecipesLbl;
@@ -46,23 +43,30 @@ extern lv_obj_t * ui_BreakfastBtn;
 extern lv_obj_t * ui_MealButtonText;
 extern lv_obj_t * ui_LunchBtn;
 extern lv_obj_t * ui_Label4;
-extern lv_obj_t * ui_SnackBtn;
+extern lv_obj_t * ui_SoupBtn;
 extern lv_obj_t * ui_Label6;
 extern lv_obj_t * ui_DinnerBtn;
 extern lv_obj_t * ui_Label5;
 extern lv_obj_t * ui_Label7;
 extern lv_obj_t * ui_Container2;
-extern lv_obj_t * ui_Button7;
+extern lv_obj_t * ui_ItalianBtn;
 extern lv_obj_t * ui_Label8;
-extern lv_obj_t * ui_Button8;
+extern lv_obj_t * ui_ThaiBtn;
 extern lv_obj_t * ui_Label9;
-extern lv_obj_t * ui_Button9;
+extern lv_obj_t * ui_MexBtn;
 extern lv_obj_t * ui_Label10;
-extern lv_obj_t * ui_Button10;
+extern lv_obj_t * ui_IndianBtn;
 extern lv_obj_t * ui_Label11;
-extern lv_obj_t * ui_Button11;
+extern lv_obj_t * ui_ChineseBtn;
 extern lv_obj_t * ui_Label12;
+void ui_event_IngredientsSuggestionPanel(lv_event_t * e);
+extern lv_obj_t * ui_IngredientsSuggestionPanel;
 extern lv_obj_t * ui_IngredientsKeyboard;
+// SCREEN: ui_Recipes
+void ui_Recipes_screen_init(void);
+void ui_event_Recipes(lv_event_t * e);
+extern lv_obj_t * ui_Recipes;
+extern lv_obj_t * ui_SpinnerRecipes;
 // SCREEN: ui_Main
 void ui_Main_screen_init(void);
 extern lv_obj_t * ui_Main;

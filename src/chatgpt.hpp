@@ -10,7 +10,7 @@ class ChatGpt
 
 public:
     // const char *GetRecipe(String ingredients[]);
-    Recipe *GetRecipes(std::vector<String> ingredients);
+    Recipe *GetRecipes(std::vector<String> ingredients, String cuisine);
 };
 
 extern ChatGpt chatGpt;

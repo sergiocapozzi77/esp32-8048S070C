@@ -11,16 +11,6 @@ void ui_Recipe_screen_init(void)
     lv_obj_clear_flag(ui_Recipe, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_text_font(ui_Recipe, &lv_font_montserrat_18, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_IngredientsSuggestionPanel = lv_obj_create(ui_Recipe);
-    lv_obj_set_width(ui_IngredientsSuggestionPanel, 235);
-    lv_obj_set_height(ui_IngredientsSuggestionPanel, 149);
-    lv_obj_set_x(ui_IngredientsSuggestionPanel, -263);
-    lv_obj_set_y(ui_IngredientsSuggestionPanel, -107);
-    lv_obj_set_align(ui_IngredientsSuggestionPanel, LV_ALIGN_CENTER);
-    lv_obj_set_flex_flow(ui_IngredientsSuggestionPanel, LV_FLEX_FLOW_COLUMN);
-    lv_obj_set_flex_align(ui_IngredientsSuggestionPanel, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
-    lv_obj_add_flag(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN);     /// Flags
-
     ui_GetRecipeButton = lv_btn_create(ui_Recipe);
     lv_obj_set_width(ui_GetRecipeButton, 135);
     lv_obj_set_height(ui_GetRecipeButton, 50);
@@ -141,21 +131,21 @@ void ui_Recipe_screen_init(void)
     lv_obj_set_align(ui_Label4, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label4, "LUNCH");
 
-    ui_SnackBtn = lv_btn_create(ui_Container1);
-    lv_obj_set_height(ui_SnackBtn, 40);
-    lv_obj_set_width(ui_SnackBtn, LV_SIZE_CONTENT);   /// 100
-    lv_obj_set_x(ui_SnackBtn, -141);
-    lv_obj_set_y(ui_SnackBtn, -11);
-    lv_obj_set_align(ui_SnackBtn, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_SnackBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_SnackBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_SnackBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_SoupBtn = lv_btn_create(ui_Container1);
+    lv_obj_set_height(ui_SoupBtn, 40);
+    lv_obj_set_width(ui_SoupBtn, LV_SIZE_CONTENT);   /// 100
+    lv_obj_set_x(ui_SoupBtn, -141);
+    lv_obj_set_y(ui_SoupBtn, -11);
+    lv_obj_set_align(ui_SoupBtn, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_SoupBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_SoupBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_SoupBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label6 = lv_label_create(ui_SnackBtn);
+    ui_Label6 = lv_label_create(ui_SoupBtn);
     lv_obj_set_width(ui_Label6, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label6, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Label6, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label6, "SNACK");
+    lv_label_set_text(ui_Label6, "SOUP");
 
     ui_DinnerBtn = lv_btn_create(ui_Container1);
     lv_obj_set_height(ui_DinnerBtn, 40);
@@ -194,95 +184,105 @@ void ui_Recipe_screen_init(void)
     lv_obj_set_style_pad_row(ui_Container2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_column(ui_Container2, 5, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Button7 = lv_btn_create(ui_Container2);
-    lv_obj_set_height(ui_Button7, 40);
-    lv_obj_set_width(ui_Button7, LV_SIZE_CONTENT);   /// 100
-    lv_obj_set_x(ui_Button7, -307);
-    lv_obj_set_y(ui_Button7, -10);
-    lv_obj_set_align(ui_Button7, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Button7, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_Button7, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_Button7, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_color(ui_Button7, lv_color_hex(0x005D00), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui_Button7, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_ItalianBtn = lv_btn_create(ui_Container2);
+    lv_obj_set_height(ui_ItalianBtn, 40);
+    lv_obj_set_width(ui_ItalianBtn, LV_SIZE_CONTENT);   /// 100
+    lv_obj_set_x(ui_ItalianBtn, -307);
+    lv_obj_set_y(ui_ItalianBtn, -10);
+    lv_obj_set_align(ui_ItalianBtn, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_ItalianBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_ItalianBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_ItalianBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_ItalianBtn, lv_color_hex(0x005D00), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_ItalianBtn, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label8 = lv_label_create(ui_Button7);
+    ui_Label8 = lv_label_create(ui_ItalianBtn);
     lv_obj_set_width(ui_Label8, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label8, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Label8, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label8, "ITALIAN");
 
-    ui_Button8 = lv_btn_create(ui_Container2);
-    lv_obj_set_height(ui_Button8, 40);
-    lv_obj_set_width(ui_Button8, LV_SIZE_CONTENT);   /// 100
-    lv_obj_set_x(ui_Button8, -141);
-    lv_obj_set_y(ui_Button8, -11);
-    lv_obj_set_align(ui_Button8, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Button8, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_Button8, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_Button8, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_color(ui_Button8, lv_color_hex(0x005D00), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui_Button8, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_ThaiBtn = lv_btn_create(ui_Container2);
+    lv_obj_set_height(ui_ThaiBtn, 40);
+    lv_obj_set_width(ui_ThaiBtn, LV_SIZE_CONTENT);   /// 100
+    lv_obj_set_x(ui_ThaiBtn, -141);
+    lv_obj_set_y(ui_ThaiBtn, -11);
+    lv_obj_set_align(ui_ThaiBtn, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_ThaiBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_ThaiBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_ThaiBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_ThaiBtn, lv_color_hex(0x005D00), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_ThaiBtn, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label9 = lv_label_create(ui_Button8);
+    ui_Label9 = lv_label_create(ui_ThaiBtn);
     lv_obj_set_width(ui_Label9, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label9, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Label9, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label9, "THAI");
 
-    ui_Button9 = lv_btn_create(ui_Container2);
-    lv_obj_set_height(ui_Button9, 40);
-    lv_obj_set_width(ui_Button9, LV_SIZE_CONTENT);   /// 100
-    lv_obj_set_x(ui_Button9, -141);
-    lv_obj_set_y(ui_Button9, -11);
-    lv_obj_set_align(ui_Button9, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Button9, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_Button9, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_Button9, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_color(ui_Button9, lv_color_hex(0x005D00), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui_Button9, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_MexBtn = lv_btn_create(ui_Container2);
+    lv_obj_set_height(ui_MexBtn, 40);
+    lv_obj_set_width(ui_MexBtn, LV_SIZE_CONTENT);   /// 100
+    lv_obj_set_x(ui_MexBtn, -141);
+    lv_obj_set_y(ui_MexBtn, -11);
+    lv_obj_set_align(ui_MexBtn, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_MexBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_MexBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_MexBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_MexBtn, lv_color_hex(0x005D00), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_MexBtn, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label10 = lv_label_create(ui_Button9);
+    ui_Label10 = lv_label_create(ui_MexBtn);
     lv_obj_set_width(ui_Label10, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label10, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Label10, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label10, "MEX");
 
-    ui_Button10 = lv_btn_create(ui_Container2);
-    lv_obj_set_height(ui_Button10, 40);
-    lv_obj_set_width(ui_Button10, LV_SIZE_CONTENT);   /// 100
-    lv_obj_set_x(ui_Button10, -141);
-    lv_obj_set_y(ui_Button10, -11);
-    lv_obj_set_align(ui_Button10, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Button10, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_Button10, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_Button10, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_color(ui_Button10, lv_color_hex(0x005D00), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui_Button10, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_IndianBtn = lv_btn_create(ui_Container2);
+    lv_obj_set_height(ui_IndianBtn, 40);
+    lv_obj_set_width(ui_IndianBtn, LV_SIZE_CONTENT);   /// 100
+    lv_obj_set_x(ui_IndianBtn, -141);
+    lv_obj_set_y(ui_IndianBtn, -11);
+    lv_obj_set_align(ui_IndianBtn, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_IndianBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_IndianBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_IndianBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_IndianBtn, lv_color_hex(0x005D00), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_IndianBtn, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label11 = lv_label_create(ui_Button10);
+    ui_Label11 = lv_label_create(ui_IndianBtn);
     lv_obj_set_width(ui_Label11, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label11, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Label11, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label11, "INDIAN");
 
-    ui_Button11 = lv_btn_create(ui_Container2);
-    lv_obj_set_height(ui_Button11, 40);
-    lv_obj_set_width(ui_Button11, LV_SIZE_CONTENT);   /// 100
-    lv_obj_set_x(ui_Button11, -141);
-    lv_obj_set_y(ui_Button11, -11);
-    lv_obj_set_align(ui_Button11, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Button11, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_Button11, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_Button11, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_color(ui_Button11, lv_color_hex(0x005D00), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui_Button11, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_ChineseBtn = lv_btn_create(ui_Container2);
+    lv_obj_set_height(ui_ChineseBtn, 40);
+    lv_obj_set_width(ui_ChineseBtn, LV_SIZE_CONTENT);   /// 100
+    lv_obj_set_x(ui_ChineseBtn, -141);
+    lv_obj_set_y(ui_ChineseBtn, -11);
+    lv_obj_set_align(ui_ChineseBtn, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_ChineseBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_ChineseBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_ChineseBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_ChineseBtn, lv_color_hex(0x005D00), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_ChineseBtn, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label12 = lv_label_create(ui_Button11);
+    ui_Label12 = lv_label_create(ui_ChineseBtn);
     lv_obj_set_width(ui_Label12, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label12, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Label12, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label12, "CHINESE");
+
+    ui_IngredientsSuggestionPanel = lv_obj_create(ui_Recipe);
+    lv_obj_set_width(ui_IngredientsSuggestionPanel, 235);
+    lv_obj_set_height(ui_IngredientsSuggestionPanel, 149);
+    lv_obj_set_x(ui_IngredientsSuggestionPanel, -246);
+    lv_obj_set_y(ui_IngredientsSuggestionPanel, -86);
+    lv_obj_set_align(ui_IngredientsSuggestionPanel, LV_ALIGN_CENTER);
+    lv_obj_set_flex_flow(ui_IngredientsSuggestionPanel, LV_FLEX_FLOW_COLUMN);
+    lv_obj_set_flex_align(ui_IngredientsSuggestionPanel, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+    lv_obj_add_flag(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN);     /// Flags
 
     ui_IngredientsKeyboard = lv_keyboard_create(ui_Recipe);
     lv_obj_set_width(ui_IngredientsKeyboard, 788);
@@ -292,10 +292,9 @@ void ui_Recipe_screen_init(void)
     lv_obj_set_align(ui_IngredientsKeyboard, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_IngredientsKeyboard, LV_OBJ_FLAG_HIDDEN);     /// Flags
 
-    lv_obj_add_event_cb(ui_IngredientsSuggestionPanel, ui_event_IngredientsSuggestionPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_GetRecipeButton, ui_event_GetRecipeButton, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_IngredientText, ui_event_IngredientText, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_IngredientsSuggestionPanel, ui_event_IngredientsSuggestionPanel, LV_EVENT_ALL, NULL);
     lv_keyboard_set_textarea(ui_IngredientsKeyboard, ui_IngredientText);
-    lv_obj_add_event_cb(ui_Recipe, ui_event_Recipe, LV_EVENT_ALL, NULL);
 
 }

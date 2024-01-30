@@ -38,3 +38,7 @@ def MealChecked(event_struct):
 def InitialActionsGui(event_struct):
     return
 
+
+def RecipeScreenLoaded(event_struct):
+    return
+

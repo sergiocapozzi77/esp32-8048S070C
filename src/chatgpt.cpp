@@ -7,7 +7,7 @@
 ChatGpt chatGpt;
 
 // const char *ChatGpt::GetRecipe(String ingredients[])
-Recipe *ChatGpt::GetRecipes(std::vector<String> ingredients)
+Recipe *ChatGpt::GetRecipes(std::vector<String> ingredients, String cuisine)
 {
   Serial.println("Getting recipe");
   HTTPClient http;
@@ -42,7 +42,14 @@ Recipe *ChatGpt::GetRecipes(std::vector<String> ingredients)
   Serial.print("Available ingredents: ");
   Serial.println(availableIngredients);
 
-  message["content"] = String("Can you suggest 3 recipes if I only have ") + availableIngredients + String(" and return the response as an array of recipes in json? Split each recipe by title as a string, ingredients as an array and method as an array.");
+  String text = String("Can you suggest 3 recipes if I only have ") + availableIngredients + String(" and return the response as an array of recipes in json? Split each recipe by title as a string, ingredients as an array and method as an array.");
+  if (!cuisine.isEmpty())
+  {
+    text += " Prefer " + cuisine + " style recipes.";
+  }
+
+  message["content"] = text;
+
   doc["temperature"] = 0.7;
   int jsonSize = measureJson(doc);
 
