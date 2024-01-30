@@ -14,9 +14,9 @@ lv_obj_t * ui_PanelRecipe_create(lv_obj_t * comp_parent)
     lv_obj_t * cui_PanelRecipe;
     cui_PanelRecipe = lv_obj_create(comp_parent);
     lv_obj_set_width(cui_PanelRecipe, 251);
-    lv_obj_set_height(cui_PanelRecipe, 248);
-    lv_obj_set_x(cui_PanelRecipe, -263);
-    lv_obj_set_y(cui_PanelRecipe, 108);
+    lv_obj_set_height(cui_PanelRecipe, 402);
+    lv_obj_set_x(cui_PanelRecipe, -262);
+    lv_obj_set_y(cui_PanelRecipe, 25);
     lv_obj_set_align(cui_PanelRecipe, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(cui_PanelRecipe, LV_FLEX_FLOW_COLUMN);
     lv_obj_set_flex_align(cui_PanelRecipe, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
@@ -43,7 +43,7 @@ lv_obj_t * ui_PanelRecipe_create(lv_obj_t * comp_parent)
     lv_obj_t * cui_PanelIngredients;
     cui_PanelIngredients = lv_obj_create(cui_PanelRecipe);
     lv_obj_set_width(cui_PanelIngredients, lv_pct(100));
-    lv_obj_set_height(cui_PanelIngredients, lv_pct(63));
+    lv_obj_set_height(cui_PanelIngredients, lv_pct(73));
     lv_obj_set_align(cui_PanelIngredients, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(cui_PanelIngredients, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(cui_PanelIngredients, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
@@ -63,7 +63,7 @@ lv_obj_t * ui_PanelRecipe_create(lv_obj_t * comp_parent)
     lv_obj_t * cui_PanelIngredientsButton;
     cui_PanelIngredientsButton = lv_obj_create(cui_PanelRecipe);
     lv_obj_set_width(cui_PanelIngredientsButton, lv_pct(100));
-    lv_obj_set_height(cui_PanelIngredientsButton, lv_pct(13));
+    lv_obj_set_height(cui_PanelIngredientsButton, lv_pct(12));
     lv_obj_set_align(cui_PanelIngredientsButton, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(cui_PanelIngredientsButton, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(cui_PanelIngredientsButton, LV_FLEX_ALIGN_END, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
@@ -76,7 +76,7 @@ lv_obj_t * ui_PanelRecipe_create(lv_obj_t * comp_parent)
     lv_obj_t * cui_RecipeSelectBtn;
     cui_RecipeSelectBtn = lv_btn_create(cui_PanelIngredientsButton);
     lv_obj_set_width(cui_RecipeSelectBtn, 100);
-    lv_obj_set_height(cui_RecipeSelectBtn, 28);
+    lv_obj_set_height(cui_RecipeSelectBtn, 42);
     lv_obj_set_align(cui_RecipeSelectBtn, LV_ALIGN_CENTER);
     lv_obj_add_flag(cui_RecipeSelectBtn, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(cui_RecipeSelectBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags

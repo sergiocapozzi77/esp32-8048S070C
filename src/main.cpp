@@ -382,6 +382,7 @@ void setup()
 void loop()
 {
   lv_timer_handler();
+  app.tick();
 
   delay(5);
 }

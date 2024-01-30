@@ -42,3 +42,7 @@ def InitialActionsGui(event_struct):
 def RecipeScreenLoaded(event_struct):
     return
 
+
+def RecipesScreenLoaded(event_struct):
+    return
+

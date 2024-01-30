@@ -1,5 +1,6 @@
 
 #include "../ui/ui.h"
+#include <ReactESP.h>
 
 #ifndef GUI_H
 #define GUI_H
@@ -11,4 +12,7 @@ lv_obj_t *createButtonWithText(lv_obj_t *parent, const char *text, void (*ui_eve
 
 void MealChecked(lv_event_t *e);
 void CuisineChecked(lv_event_t *e);
+
+using namespace reactesp;
+extern ReactESP app;
 #endif

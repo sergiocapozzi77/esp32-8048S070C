@@ -11,6 +11,7 @@
 class RecipesScreen
 {
 public:
+    void SetRecipe(Recipe *recipe, lv_obj_t *recipePanel);
 };
 
 extern RecipesScreen recipesScreen;

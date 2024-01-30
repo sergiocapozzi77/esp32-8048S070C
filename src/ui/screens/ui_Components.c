@@ -89,9 +89,9 @@ void ui_Components_screen_init(void)
     lv_obj_set_style_text_color(ui_SuggestionText, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_SuggestionText, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_PanelRecipe2 = ui_PanelRecipe_create(ui_Components);
-    lv_obj_set_x(ui_PanelRecipe2, -263);
-    lv_obj_set_y(ui_PanelRecipe2, 108);
+    ui_PanelRecipeTemplate = ui_PanelRecipe_create(ui_Components);
+    lv_obj_set_x(ui_PanelRecipeTemplate, -263);
+    lv_obj_set_y(ui_PanelRecipeTemplate, 108);
 
 
 

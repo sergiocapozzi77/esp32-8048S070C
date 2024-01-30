@@ -16,6 +16,36 @@ void ui_Recipes_screen_init(void)
     lv_obj_set_align(ui_SpinnerRecipes, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_SpinnerRecipes, LV_OBJ_FLAG_CLICKABLE);      /// Flags
 
+    ui_PanelRecipe1 = ui_PanelRecipe_create(ui_Recipes);
+    lv_obj_set_x(ui_PanelRecipe1, -265);
+    lv_obj_set_y(ui_PanelRecipe1, 30);
+
+
+
+
+
+
+
+    ui_PanelRecipe2 = ui_PanelRecipe_create(ui_Recipes);
+    lv_obj_set_x(ui_PanelRecipe2, -1);
+    lv_obj_set_y(ui_PanelRecipe2, 30);
+
+
+
+
+
+
+
+    ui_PanelRecipe3 = ui_PanelRecipe_create(ui_Recipes);
+    lv_obj_set_x(ui_PanelRecipe3, 264);
+    lv_obj_set_y(ui_PanelRecipe3, 30);
+
+
+
+
+
+
+
     lv_obj_add_event_cb(ui_Recipes, ui_event_Recipes, LV_EVENT_ALL, NULL);
 
 }

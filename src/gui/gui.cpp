@@ -7,6 +7,12 @@
 #include "../ui/ui.h"
 #include "../gfx/LGFX_ESP32S3_RGB_MakerfabsParallelTFTwithTouch70.h"
 
+#include <ReactESP.h>
+
+using namespace reactesp;
+
+ReactESP app;
+
 static const char *TAG = "gui";
 
 static const uint16_t screenWidth = 800;

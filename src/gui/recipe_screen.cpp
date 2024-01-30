@@ -64,9 +64,6 @@ void CuisineChecked(lv_event_t *e)
 void GetRecipeButtonClicked(lv_event_t *e)
 {
     Serial.println("Getting recipe button click");
-
-    // recipeScreen.SetRecipe(&recipes[0], ui_PanelRecipe);
-    // recipeScreen.SetRecipe(&recipes[1], ui_PanelRecipe1);
 }
 
 void IngredientsTextValueChanged(lv_event_t *e)
@@ -88,29 +85,6 @@ void RecipeScreen::SuggestedIngredientClicked(lv_event_t *e)
     lv_textarea_set_text(ui_IngredientText, "");
 
     this->availableIngredients.push_back(String(ingredient));
-}
-
-void RecipeScreen::SetRecipe(Recipe *recipe, lv_obj_t *recipePanel)
-{
-    lv_label_set_text(ui_comp_get_child(recipePanel, UI_COMP_PANELRECIPE_RECIPETITLE0), recipe->title.c_str());
-
-    String allIngredients = "Ingredients:\n\n";
-    for (int i = 0; i < recipe->ingredients.size(); i++)
-    {
-        allIngredients = allIngredients + recipe->ingredients[i] + String("\n");
-    }
-
-    allIngredients += "\n\nMethod:\n\n";
-
-    for (int i = 0; i < recipe->method.size(); i++)
-    {
-        allIngredients = allIngredients + recipe->method[i] + String("\n");
-    }
-
-    Serial.println("------ all ingredients ----");
-    Serial.println(allIngredients);
-
-    lv_label_set_text(ui_comp_get_child(recipePanel, UI_COMP_PANELRECIPE_PANELINGREDIENTS_RECIPEINGREDIENTS0), allIngredients.c_str());
 }
 
 void RecipeScreen::IngredientsTextValueChanged(lv_event_t *e)

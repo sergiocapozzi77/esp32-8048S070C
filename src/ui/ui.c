@@ -52,6 +52,9 @@ void ui_Recipes_screen_init(void);
 void ui_event_Recipes(lv_event_t * e);
 lv_obj_t * ui_Recipes;
 lv_obj_t * ui_SpinnerRecipes;
+lv_obj_t * ui_PanelRecipe1;
+lv_obj_t * ui_PanelRecipe2;
+lv_obj_t * ui_PanelRecipe3;
 
 
 // SCREEN: ui_Main
@@ -95,7 +98,7 @@ lv_obj_t * ui_CloseLabel;
 lv_obj_t * ui_ChipText;
 lv_obj_t * ui_SuggestionButton;
 lv_obj_t * ui_SuggestionText;
-lv_obj_t * ui_PanelRecipe2;
+lv_obj_t * ui_PanelRecipeTemplate;
 void ui_event____initial_actions0(lv_event_t * e);
 lv_obj_t * ui____initial_actions0;
 
