@@ -15,6 +15,20 @@ void IngredientsTextReady(lv_event_t *e)
     }
 }
 
+void MealChecked(lv_event_t *e)
+{
+    lv_obj_t *target = lv_event_get_current_target(e);
+
+    if (target != ui_BreakfastBtn)
+    {
+        _ui_state_modify(ui_BreakfastBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    }
+    if (target != ui_LunchBtn)
+    {
+        _ui_state_modify(ui_LunchBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    }
+}
+
 void GetRecipeButtonClicked(lv_event_t *e)
 {
     Serial.println("Getting recipe button click");
@@ -25,9 +39,8 @@ void GetRecipeButtonClicked(lv_event_t *e)
         return;
     }
 
-    recipeScreen.SetRecipe(&recipes[0], ui_RecipeTitle0, ui_RecipeIngredients0);
-    recipeScreen.SetRecipe(&recipes[1], ui_RecipeTitle1, ui_RecipeIngredients1);
-    recipeScreen.SetRecipe(&recipes[2], ui_RecipeTitle2, ui_RecipeIngredients2);
+    // recipeScreen.SetRecipe(&recipes[0], ui_PanelRecipe);
+    // recipeScreen.SetRecipe(&recipes[1], ui_PanelRecipe1);
 }
 
 void IngredientsTextValueChanged(lv_event_t *e)
@@ -51,9 +64,9 @@ void RecipeScreen::SuggestedIngredientClicked(lv_event_t *e)
     this->availableIngredients.push_back(String(ingredient));
 }
 
-void RecipeScreen::SetRecipe(Recipe *recipe, lv_obj_t *title, lv_obj_t *ingredients)
+void RecipeScreen::SetRecipe(Recipe *recipe, lv_obj_t *recipePanel)
 {
-    lv_label_set_text(title, recipe->title.c_str());
+    lv_label_set_text(ui_comp_get_child(recipePanel, UI_COMP_PANELRECIPE_RECIPETITLE0), recipe->title.c_str());
 
     String allIngredients = "Ingredients:\n\n";
     for (int i = 0; i < recipe->ingredients.size(); i++)
@@ -71,7 +84,7 @@ void RecipeScreen::SetRecipe(Recipe *recipe, lv_obj_t *title, lv_obj_t *ingredie
     Serial.println("------ all ingredients ----");
     Serial.println(allIngredients);
 
-    lv_label_set_text(ingredients, allIngredients.c_str());
+    lv_label_set_text(ui_comp_get_child(recipePanel, UI_COMP_PANELRECIPE_PANELINGREDIENTS_RECIPEINGREDIENTS0), allIngredients.c_str());
 }
 
 void RecipeScreen::IngredientsTextValueChanged(lv_event_t *e)

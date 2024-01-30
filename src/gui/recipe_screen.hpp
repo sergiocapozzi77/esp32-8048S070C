@@ -17,7 +17,7 @@ public:
     std::vector<String> GetAvailableIngredients() { return availableIngredients; }
     void SuggestedIngredientClicked(lv_event_t *e);
     void IngredientsTextValueChanged(lv_event_t *e);
-    void SetRecipe(Recipe *recipe, lv_obj_t *title, lv_obj_t *ingredients);
+    void SetRecipe(Recipe *recipe, lv_obj_t *recipePanel);
 };
 
 extern RecipeScreen recipeScreen;

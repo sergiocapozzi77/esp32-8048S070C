@@ -13,35 +13,38 @@
 void ui_Recipe_screen_init(void);
 void ui_event_Recipe(lv_event_t * e);
 lv_obj_t * ui_Recipe;
-void ui_event_IngredientText(lv_event_t * e);
-lv_obj_t * ui_IngredientText;
-lv_obj_t * ui_AvailableIngredientsPanel;
 void ui_event_IngredientsSuggestionPanel(lv_event_t * e);
 lv_obj_t * ui_IngredientsSuggestionPanel;
 void ui_event_GetRecipeButton(lv_event_t * e);
 lv_obj_t * ui_GetRecipeButton;
 lv_obj_t * ui_GetRecipesLbl;
-lv_obj_t * ui_PanelRecipe0;
-lv_obj_t * ui_RecipeTitle0;
-lv_obj_t * ui_PanelIngredients;
-lv_obj_t * ui_RecipeIngredients0;
-lv_obj_t * ui_PanelIngredientsButton;
-lv_obj_t * ui_RecipeSelectBtn;
-lv_obj_t * ui_SelectLbl;
-lv_obj_t * ui_PanelRecipe1;
-lv_obj_t * ui_RecipeTitle1;
-lv_obj_t * ui_PanelIngredients1;
-lv_obj_t * ui_RecipeIngredients1;
-lv_obj_t * ui_PanelIngredientsButton1;
-lv_obj_t * ui_RecipeSelectBtn1;
-lv_obj_t * ui_SelectLbl1;
-lv_obj_t * ui_PanelRecipe2;
-lv_obj_t * ui_RecipeTitle2;
-lv_obj_t * ui_PanelIngredients2;
-lv_obj_t * ui_RecipeIngredients2;
-lv_obj_t * ui_PanelIngredientsButton2;
-lv_obj_t * ui_RecipeSelectBtn2;
-lv_obj_t * ui_SelectLbl2;
+lv_obj_t * ui_TopPanel;
+lv_obj_t * ui_Image3;
+lv_obj_t * ui_AvailableIngredientsPanel;
+void ui_event_IngredientText(lv_event_t * e);
+lv_obj_t * ui_IngredientText;
+lv_obj_t * ui_Label2;
+lv_obj_t * ui_Container1;
+lv_obj_t * ui_BreakfastBtn;
+lv_obj_t * ui_MealButtonText;
+lv_obj_t * ui_LunchBtn;
+lv_obj_t * ui_Label4;
+lv_obj_t * ui_SnackBtn;
+lv_obj_t * ui_Label6;
+lv_obj_t * ui_DinnerBtn;
+lv_obj_t * ui_Label5;
+lv_obj_t * ui_Label7;
+lv_obj_t * ui_Container2;
+lv_obj_t * ui_Button7;
+lv_obj_t * ui_Label8;
+lv_obj_t * ui_Button8;
+lv_obj_t * ui_Label9;
+lv_obj_t * ui_Button9;
+lv_obj_t * ui_Label10;
+lv_obj_t * ui_Button10;
+lv_obj_t * ui_Label11;
+lv_obj_t * ui_Button11;
+lv_obj_t * ui_Label12;
 lv_obj_t * ui_IngredientsKeyboard;
 
 
@@ -86,6 +89,7 @@ lv_obj_t * ui_CloseLabel;
 lv_obj_t * ui_ChipText;
 lv_obj_t * ui_SuggestionButton;
 lv_obj_t * ui_SuggestionText;
+lv_obj_t * ui_PanelRecipe2;
 void ui_event____initial_actions0(lv_event_t * e);
 lv_obj_t * ui____initial_actions0;
 
@@ -108,6 +112,22 @@ void ui_event_Recipe(lv_event_t * e)
         _ui_flag_modify(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
     }
 }
+void ui_event_IngredientsSuggestionPanel(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_FOCUSED) {
+        _ui_flag_modify(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+    }
+}
+void ui_event_GetRecipeButton(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        GetRecipeButtonClicked(e);
+    }
+}
 void ui_event_IngredientText(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -124,22 +144,6 @@ void ui_event_IngredientText(lv_event_t * e)
     }
     if(event_code == LV_EVENT_VALUE_CHANGED) {
         IngredientsTextValueChanged(e);
-    }
-}
-void ui_event_IngredientsSuggestionPanel(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
-    if(event_code == LV_EVENT_FOCUSED) {
-        _ui_flag_modify(ui_IngredientsSuggestionPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
-    }
-}
-void ui_event_GetRecipeButton(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
-    if(event_code == LV_EVENT_CLICKED) {
-        GetRecipeButtonClicked(e);
     }
 }
 void ui_event_Button1(lv_event_t * e)
@@ -203,12 +207,17 @@ void ui_event____initial_actions0(lv_event_t * e)
     if(event_code == LV_EVENT_SCREEN_LOAD_START) {
         _ui_basic_set_property(ui_WiFiPwdKeyboard, _UI_BASIC_PROPERTY_POSITION_X,  1000);
     }
+    if(event_code == LV_EVENT_SCREEN_LOAD_START) {
+        InitialActionsGui(e);
+    }
 }
 
 ///////////////////// SCREENS ////////////////////
 
 void ui_init(void)
 {
+    LV_EVENT_GET_COMP_CHILD = lv_event_register_id();
+
     lv_disp_t * dispp = lv_disp_get_default();
     lv_theme_t * theme = lv_theme_default_init(dispp, lv_palette_main(LV_PALETTE_BLUE), lv_palette_main(LV_PALETTE_RED),
                                                false, LV_FONT_DEFAULT);

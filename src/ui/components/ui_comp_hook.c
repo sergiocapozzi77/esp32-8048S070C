@@ -3,3 +3,8 @@
 // LVGL version: 8.2.0
 // Project name: SQTest
 
+#include "../ui.h"
+
+void ui_comp_PanelRecipe_create_hook(lv_obj_t * comp)
+{
+}

@@ -30,3 +30,11 @@ def IngredientsTextValueChanged(event_struct):
 def GetRecipeButtonClicked(event_struct):
     return
 
+
+def MealChecked(event_struct):
+    return
+
+
+def InitialActionsGui(event_struct):
+    return
+

@@ -79,6 +79,11 @@ void gui_start()
   ui_init();
 }
 
+void InitialActionsGui(lv_event_t *e)
+{
+  lv_obj_add_event_cb(ui_MealButton, ui_event_MealButton, LV_EVENT_ALL, NULL);
+}
+
 lv_obj_t *createRecipeItem(lv_img_dsc_t *img)
 {
   lv_obj_t *recipeItem = lv_obj_create(ui_RecipePanel);

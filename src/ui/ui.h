@@ -23,40 +23,45 @@ extern "C" {
 #endif
 
 #include "ui_helpers.h"
+#include "components/ui_comp.h"
+#include "components/ui_comp_hook.h"
 #include "ui_events.h"
 // SCREEN: ui_Recipe
 void ui_Recipe_screen_init(void);
 void ui_event_Recipe(lv_event_t * e);
 extern lv_obj_t * ui_Recipe;
-void ui_event_IngredientText(lv_event_t * e);
-extern lv_obj_t * ui_IngredientText;
-extern lv_obj_t * ui_AvailableIngredientsPanel;
 void ui_event_IngredientsSuggestionPanel(lv_event_t * e);
 extern lv_obj_t * ui_IngredientsSuggestionPanel;
 void ui_event_GetRecipeButton(lv_event_t * e);
 extern lv_obj_t * ui_GetRecipeButton;
 extern lv_obj_t * ui_GetRecipesLbl;
-extern lv_obj_t * ui_PanelRecipe0;
-extern lv_obj_t * ui_RecipeTitle0;
-extern lv_obj_t * ui_PanelIngredients;
-extern lv_obj_t * ui_RecipeIngredients0;
-extern lv_obj_t * ui_PanelIngredientsButton;
-extern lv_obj_t * ui_RecipeSelectBtn;
-extern lv_obj_t * ui_SelectLbl;
-extern lv_obj_t * ui_PanelRecipe1;
-extern lv_obj_t * ui_RecipeTitle1;
-extern lv_obj_t * ui_PanelIngredients1;
-extern lv_obj_t * ui_RecipeIngredients1;
-extern lv_obj_t * ui_PanelIngredientsButton1;
-extern lv_obj_t * ui_RecipeSelectBtn1;
-extern lv_obj_t * ui_SelectLbl1;
-extern lv_obj_t * ui_PanelRecipe2;
-extern lv_obj_t * ui_RecipeTitle2;
-extern lv_obj_t * ui_PanelIngredients2;
-extern lv_obj_t * ui_RecipeIngredients2;
-extern lv_obj_t * ui_PanelIngredientsButton2;
-extern lv_obj_t * ui_RecipeSelectBtn2;
-extern lv_obj_t * ui_SelectLbl2;
+extern lv_obj_t * ui_TopPanel;
+extern lv_obj_t * ui_Image3;
+extern lv_obj_t * ui_AvailableIngredientsPanel;
+void ui_event_IngredientText(lv_event_t * e);
+extern lv_obj_t * ui_IngredientText;
+extern lv_obj_t * ui_Label2;
+extern lv_obj_t * ui_Container1;
+extern lv_obj_t * ui_BreakfastBtn;
+extern lv_obj_t * ui_MealButtonText;
+extern lv_obj_t * ui_LunchBtn;
+extern lv_obj_t * ui_Label4;
+extern lv_obj_t * ui_SnackBtn;
+extern lv_obj_t * ui_Label6;
+extern lv_obj_t * ui_DinnerBtn;
+extern lv_obj_t * ui_Label5;
+extern lv_obj_t * ui_Label7;
+extern lv_obj_t * ui_Container2;
+extern lv_obj_t * ui_Button7;
+extern lv_obj_t * ui_Label8;
+extern lv_obj_t * ui_Button8;
+extern lv_obj_t * ui_Label9;
+extern lv_obj_t * ui_Button9;
+extern lv_obj_t * ui_Label10;
+extern lv_obj_t * ui_Button10;
+extern lv_obj_t * ui_Label11;
+extern lv_obj_t * ui_Button11;
+extern lv_obj_t * ui_Label12;
 extern lv_obj_t * ui_IngredientsKeyboard;
 // SCREEN: ui_Main
 void ui_Main_screen_init(void);
@@ -95,9 +100,12 @@ extern lv_obj_t * ui_CloseLabel;
 extern lv_obj_t * ui_ChipText;
 extern lv_obj_t * ui_SuggestionButton;
 extern lv_obj_t * ui_SuggestionText;
+extern lv_obj_t * ui_PanelRecipe2;
 void ui_event____initial_actions0(lv_event_t * e);
 extern lv_obj_t * ui____initial_actions0;
 
+LV_IMG_DECLARE(
+    ui_img_9921876_spoon_fork_kitchen_restaurant_utensil_icon_png);    // assets\9921876_spoon_fork_kitchen_restaurant_utensil_icon.png
 LV_IMG_DECLARE(
     ui_img_3994418_internet_network_signal_wifi_wireless_icon_png);    // assets\3994418_internet_network_signal_wifi_wireless_icon.png
 LV_IMG_DECLARE(ui_img_pizza_png);    // assets\pizza.png
