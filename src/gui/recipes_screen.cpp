@@ -31,7 +31,25 @@ void loadRecipes()
         cuisine = "chinese";
     }
 
-    Recipe *recipes = chatGpt.GetRecipes(recipeScreen.GetAvailableIngredients(), cuisine);
+    String course;
+    if (lv_obj_has_state(ui_MainBtn, LV_STATE_CHECKED))
+    {
+        course = "main";
+    }
+    else if (lv_obj_has_state(ui_AppetizerBtn, LV_STATE_CHECKED))
+    {
+        course = "appetizer";
+    }
+    else if (lv_obj_has_state(ui_SoupBtn, LV_STATE_CHECKED))
+    {
+        course = "soup";
+    }
+    else if (lv_obj_has_state(ui_DessertBtn, LV_STATE_CHECKED))
+    {
+        course = "dessert";
+    }
+
+    Recipe *recipes = chatGpt.GetRecipes(recipeScreen.GetAvailableIngredients(), cuisine, course);
     lv_obj_add_flag(ui_SpinnerRecipes, LV_OBJ_FLAG_HIDDEN);
 
     if (recipes == NULL)

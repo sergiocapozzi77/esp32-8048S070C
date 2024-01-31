@@ -87,21 +87,10 @@ void gui_start()
 
 void InitialActionsGui(lv_event_t *e)
 {
-  lv_obj_set_user_data(ui_BreakfastBtn, (char *)"breakfast");
-  lv_obj_set_user_data(ui_LunchBtn, (char *)"lunch");
-  lv_obj_set_user_data(ui_SoupBtn, (char *)"soup");
-  lv_obj_set_user_data(ui_DinnerBtn, (char *)"dinner");
-
-  lv_obj_add_event_cb(ui_BreakfastBtn, MealChecked, LV_EVENT_CLICKED, NULL);
-  lv_obj_add_event_cb(ui_LunchBtn, MealChecked, LV_EVENT_CLICKED, NULL);
+  lv_obj_add_event_cb(ui_AppetizerBtn, MealChecked, LV_EVENT_CLICKED, NULL);
+  lv_obj_add_event_cb(ui_Main, MealChecked, LV_EVENT_CLICKED, NULL);
   lv_obj_add_event_cb(ui_SoupBtn, MealChecked, LV_EVENT_CLICKED, NULL);
-  lv_obj_add_event_cb(ui_DinnerBtn, MealChecked, LV_EVENT_CLICKED, NULL);
-
-  lv_obj_set_user_data(ui_ItalianBtn, (char *)"italian");
-  lv_obj_set_user_data(ui_ThaiBtn, (char *)"thai");
-  lv_obj_set_user_data(ui_MexBtn, (char *)"mexican");
-  lv_obj_set_user_data(ui_IndianBtn, (char *)"indian");
-  lv_obj_set_user_data(ui_ChineseBtn, (char *)"chinese");
+  lv_obj_add_event_cb(ui_DessertBtn, MealChecked, LV_EVENT_CLICKED, NULL);
 
   lv_obj_add_event_cb(ui_ItalianBtn, CuisineChecked, LV_EVENT_CLICKED, NULL);
   lv_obj_add_event_cb(ui_ThaiBtn, CuisineChecked, LV_EVENT_CLICKED, NULL);

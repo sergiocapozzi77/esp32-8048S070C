@@ -18,21 +18,21 @@ void IngredientsTextReady(lv_event_t *e)
 void MealChecked(lv_event_t *e)
 {
     lv_obj_t *target = lv_event_get_target(e);
-    if (target != ui_BreakfastBtn)
+    if (target != ui_AppetizerBtn)
     {
-        _ui_state_modify(ui_BreakfastBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+        _ui_state_modify(ui_AppetizerBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     }
-    if (target != ui_LunchBtn)
+    if (target != ui_MainBtn)
     {
-        _ui_state_modify(ui_LunchBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+        _ui_state_modify(ui_MainBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     }
     if (target != ui_SoupBtn)
     {
         _ui_state_modify(ui_SoupBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     }
-    if (target != ui_DinnerBtn)
+    if (target != ui_DessertBtn)
     {
-        _ui_state_modify(ui_DinnerBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+        _ui_state_modify(ui_DessertBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     }
 }
 

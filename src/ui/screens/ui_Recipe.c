@@ -99,37 +99,37 @@ void ui_Recipe_screen_init(void)
     lv_obj_set_style_pad_row(ui_Container1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_column(ui_Container1, 5, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_BreakfastBtn = lv_btn_create(ui_Container1);
-    lv_obj_set_height(ui_BreakfastBtn, 40);
-    lv_obj_set_width(ui_BreakfastBtn, LV_SIZE_CONTENT);   /// 100
-    lv_obj_set_x(ui_BreakfastBtn, -307);
-    lv_obj_set_y(ui_BreakfastBtn, -10);
-    lv_obj_set_align(ui_BreakfastBtn, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_BreakfastBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_BreakfastBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_BreakfastBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_AppetizerBtn = lv_btn_create(ui_Container1);
+    lv_obj_set_height(ui_AppetizerBtn, 40);
+    lv_obj_set_width(ui_AppetizerBtn, LV_SIZE_CONTENT);   /// 100
+    lv_obj_set_x(ui_AppetizerBtn, -307);
+    lv_obj_set_y(ui_AppetizerBtn, -10);
+    lv_obj_set_align(ui_AppetizerBtn, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_AppetizerBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_AppetizerBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_AppetizerBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_MealButtonText = lv_label_create(ui_BreakfastBtn);
+    ui_MealButtonText = lv_label_create(ui_AppetizerBtn);
     lv_obj_set_width(ui_MealButtonText, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_MealButtonText, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_MealButtonText, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_MealButtonText, "BREAKFAST");
+    lv_label_set_text(ui_MealButtonText, "APPETIZER");
 
-    ui_LunchBtn = lv_btn_create(ui_Container1);
-    lv_obj_set_height(ui_LunchBtn, 40);
-    lv_obj_set_width(ui_LunchBtn, LV_SIZE_CONTENT);   /// 100
-    lv_obj_set_x(ui_LunchBtn, -141);
-    lv_obj_set_y(ui_LunchBtn, -11);
-    lv_obj_set_align(ui_LunchBtn, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_LunchBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_LunchBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_LunchBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_MainBtn = lv_btn_create(ui_Container1);
+    lv_obj_set_height(ui_MainBtn, 40);
+    lv_obj_set_width(ui_MainBtn, LV_SIZE_CONTENT);   /// 100
+    lv_obj_set_x(ui_MainBtn, -141);
+    lv_obj_set_y(ui_MainBtn, -11);
+    lv_obj_set_align(ui_MainBtn, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_MainBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_MainBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_MainBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label4 = lv_label_create(ui_LunchBtn);
+    ui_Label4 = lv_label_create(ui_MainBtn);
     lv_obj_set_width(ui_Label4, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label4, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Label4, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label4, "LUNCH");
+    lv_label_set_text(ui_Label4, "MAIN");
 
     ui_SoupBtn = lv_btn_create(ui_Container1);
     lv_obj_set_height(ui_SoupBtn, 40);
@@ -147,21 +147,21 @@ void ui_Recipe_screen_init(void)
     lv_obj_set_align(ui_Label6, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label6, "SOUP");
 
-    ui_DinnerBtn = lv_btn_create(ui_Container1);
-    lv_obj_set_height(ui_DinnerBtn, 40);
-    lv_obj_set_width(ui_DinnerBtn, LV_SIZE_CONTENT);   /// 100
-    lv_obj_set_x(ui_DinnerBtn, -141);
-    lv_obj_set_y(ui_DinnerBtn, -11);
-    lv_obj_set_align(ui_DinnerBtn, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_DinnerBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_DinnerBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_DinnerBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_DessertBtn = lv_btn_create(ui_Container1);
+    lv_obj_set_height(ui_DessertBtn, 40);
+    lv_obj_set_width(ui_DessertBtn, LV_SIZE_CONTENT);   /// 100
+    lv_obj_set_x(ui_DessertBtn, -141);
+    lv_obj_set_y(ui_DessertBtn, -11);
+    lv_obj_set_align(ui_DessertBtn, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_DessertBtn, LV_OBJ_FLAG_CHECKABLE | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_DessertBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_DessertBtn, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label5 = lv_label_create(ui_DinnerBtn);
-    lv_obj_set_width(ui_Label5, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label5, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_align(ui_Label5, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label5, "DINNER");
+    ui_Label3 = lv_label_create(ui_DessertBtn);
+    lv_obj_set_width(ui_Label3, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Label3, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_Label3, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_Label3, "DESSERT");
 
     ui_Label7 = lv_label_create(ui_Recipe);
     lv_obj_set_width(ui_Label7, LV_SIZE_CONTENT);   /// 1
