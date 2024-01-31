@@ -4,8 +4,16 @@
 #include "../ingredients.hpp"
 #include <Arduino.h>
 #include "models/recipe.hpp"
+#include "stepbystep_screen.hpp"
 
 RecipesScreen recipesScreen;
+
+void RecipeSelectClicked(lv_event_t *e)
+{
+    stepByStepScreen.SetSelectedRecipe((Recipe *)lv_obj_get_user_data(e->target));
+    stepByStepScreen.VisualizeIngredients();
+    _ui_screen_change(&ui_StepByStep, LV_SCR_LOAD_ANIM_MOVE_LEFT, 500, 0, &ui_StepByStep_screen_init);
+}
 
 void loadRecipes()
 {
@@ -57,8 +65,14 @@ void loadRecipes()
         return;
     }
 
+    Serial.println("Setting recipes");
+
+    Serial.println("Setting recipes 1");
     recipesScreen.SetRecipe(&recipes[0], ui_PanelRecipe1);
+    Serial.println("Setting recipes 2");
     recipesScreen.SetRecipe(&recipes[1], ui_PanelRecipe2);
+
+    Serial.println("Setting recipes 3");
     recipesScreen.SetRecipe(&recipes[2], ui_PanelRecipe3);
 }
 
@@ -73,21 +87,18 @@ void RecipesScreen::SetRecipe(Recipe *recipe, lv_obj_t *recipePanel)
 {
     lv_label_set_text(ui_comp_get_child(recipePanel, UI_COMP_PANELRECIPE_RECIPETITLE0), recipe->title.c_str());
 
-    String allIngredients = "Ingredients:\n\n";
-    for (int i = 0; i < recipe->ingredients.size(); i++)
-    {
-        allIngredients = allIngredients + recipe->ingredients[i] + String("\n");
-    }
+    String allIngredients = recipe->GetIngredients();
 
-    allIngredients += "\n\nMethod:\n\n";
+    // allIngredients += "\n\nMethod:\n\n";
 
-    for (int i = 0; i < recipe->method.size(); i++)
-    {
-        allIngredients = allIngredients + recipe->method[i] + String("\n");
-    }
+    // for (int i = 0; i < recipe->method.size(); i++)
+    // {
+    //     allIngredients = allIngredients + recipe->method[i] + String("\n");
+    // }
 
-    Serial.println("------ all ingredients ----");
-    Serial.println(allIngredients);
+    // Serial.println("------ all ingredients ----");
+    // Serial.println(allIngredients);
 
     lv_label_set_text(ui_comp_get_child(recipePanel, UI_COMP_PANELRECIPE_PANELINGREDIENTS_RECIPEINGREDIENTS0), allIngredients.c_str());
+    lv_obj_set_user_data(ui_comp_get_child(recipePanel, UI_COMP_PANELRECIPE_PANELINGREDIENTSBUTTON_RECIPESELECTBTN), recipe);
 }

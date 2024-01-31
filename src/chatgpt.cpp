@@ -48,7 +48,7 @@ Recipe *ChatGpt::GetRecipes(std::vector<String> ingredients, String cuisine, Str
     courseExpl += " for a " + course + " course,";
   }
 
-  String text = String("Can you suggest 3 recipes") + courseExpl + String(" if I only have ") + availableIngredients + String(" and return the response as an array of recipes in json? Split each recipe by title as a string, ingredients as an array and method as an array.");
+  String text = String("Can you suggest 3 recipes") + courseExpl + String(" if I only have ") + availableIngredients + String(" and return the response as an array of recipes in json? Split each recipe by title as a string, ingredients as an array and method as an array. Use the metric system.");
   if (!cuisine.isEmpty())
   {
     text += " Prefer " + cuisine + " style recipes.";

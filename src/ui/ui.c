@@ -57,6 +57,21 @@ lv_obj_t * ui_PanelRecipe2;
 lv_obj_t * ui_PanelRecipe3;
 
 
+// SCREEN: ui_StepByStep
+void ui_StepByStep_screen_init(void);
+lv_obj_t * ui_StepByStep;
+lv_obj_t * ui_TitlePnl;
+lv_obj_t * ui_RecipeTitleLbl;
+lv_obj_t * ui_TitlePnl1;
+lv_obj_t * ui_RecipeStepLbl;
+void ui_event_NextStepBtn(lv_event_t * e);
+lv_obj_t * ui_NextStepBtn;
+lv_obj_t * ui_NextLbl;
+void ui_event_PrevStepBtn(lv_event_t * e);
+lv_obj_t * ui_PrevStepBtn;
+lv_obj_t * ui_PrevLbl;
+
+
 // SCREEN: ui_Main
 void ui_Main_screen_init(void);
 lv_obj_t * ui_Main;
@@ -157,6 +172,22 @@ void ui_event_Recipes(lv_event_t * e)
         (e);
     }
 }
+void ui_event_NextStepBtn(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        NextBtnClick(e);
+    }
+}
+void ui_event_PrevStepBtn(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        PrevBtnClick(e);
+    }
+}
 void ui_event_Button1(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -235,6 +266,7 @@ void ui_init(void)
     lv_disp_set_theme(dispp, theme);
     ui_Recipe_screen_init();
     ui_Recipes_screen_init();
+    ui_StepByStep_screen_init();
     ui_Main_screen_init();
     ui_Options_screen_init();
     ui_Components_screen_init();

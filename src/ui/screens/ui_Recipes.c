@@ -9,6 +9,7 @@ void ui_Recipes_screen_init(void)
 {
     ui_Recipes = lv_obj_create(NULL);
     lv_obj_clear_flag(ui_Recipes, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_text_font(ui_Recipes, &lv_font_montserrat_18, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_SpinnerRecipes = lv_spinner_create(ui_Recipes, 1000, 90);
     lv_obj_set_width(ui_SpinnerRecipes, 80);

@@ -8,3 +8,7 @@
 void ui_comp_PanelRecipe_create_hook(lv_obj_t * comp)
 {
 }
+
+void ui_comp_PanelRecipe_compedit_create_hook(lv_obj_t * comp)
+{
+}

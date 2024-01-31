@@ -46,3 +46,15 @@ def RecipeScreenLoaded(event_struct):
 def RecipesScreenLoaded(event_struct):
     return
 
+
+def RecipeSelectClicked(event_struct):
+    return
+
+
+def NextBtnClick(event_struct):
+    return
+
+
+def PrevBtnClick(event_struct):
+    return
+

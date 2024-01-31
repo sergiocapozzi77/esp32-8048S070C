@@ -22,6 +22,7 @@ extern "C" {
 #define UI_COMP_PANELRECIPE_PANELINGREDIENTSBUTTON_RECIPESELECTBTN_SELECTLBL 6
 #define _UI_COMP_PANELRECIPE_NUM 7
 lv_obj_t * ui_PanelRecipe_create(lv_obj_t * comp_parent);
+void ui_event_comp_PanelRecipe_RecipeSelectBtn(lv_event_t * e);
 
 #ifdef __cplusplus
 } /*extern "C"*/

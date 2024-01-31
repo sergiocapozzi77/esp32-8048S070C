@@ -6,6 +6,16 @@
 #include "../ui.h"
 
 
+void ui_event_comp_PanelRecipe_RecipeSelectBtn(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    lv_obj_t ** comp_PanelRecipe = lv_event_get_user_data(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        RecipeSelectClicked(e);
+    }
+}
+
 // COMPONENT PanelRecipe
 
 lv_obj_t * ui_PanelRecipe_create(lv_obj_t * comp_parent)
@@ -15,8 +25,8 @@ lv_obj_t * ui_PanelRecipe_create(lv_obj_t * comp_parent)
     cui_PanelRecipe = lv_obj_create(comp_parent);
     lv_obj_set_width(cui_PanelRecipe, 251);
     lv_obj_set_height(cui_PanelRecipe, 402);
-    lv_obj_set_x(cui_PanelRecipe, -262);
-    lv_obj_set_y(cui_PanelRecipe, 25);
+    lv_obj_set_x(cui_PanelRecipe, -266);
+    lv_obj_set_y(cui_PanelRecipe, 29);
     lv_obj_set_align(cui_PanelRecipe, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(cui_PanelRecipe, LV_FLEX_FLOW_COLUMN);
     lv_obj_set_flex_align(cui_PanelRecipe, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
@@ -30,11 +40,15 @@ lv_obj_t * ui_PanelRecipe_create(lv_obj_t * comp_parent)
 
     lv_obj_t * cui_RecipeTitle0;
     cui_RecipeTitle0 = lv_label_create(cui_PanelRecipe);
-    lv_obj_set_height(cui_RecipeTitle0, 34);
+    lv_obj_set_height(cui_RecipeTitle0, 69);
     lv_obj_set_width(cui_RecipeTitle0, lv_pct(100));
     lv_obj_set_align(cui_RecipeTitle0, LV_ALIGN_CENTER);
     lv_label_set_text(cui_RecipeTitle0, "");
-    lv_obj_set_style_text_font(cui_RecipeTitle0, &lv_font_montserrat_16, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(cui_RecipeTitle0, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(cui_RecipeTitle0, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(cui_RecipeTitle0, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(cui_RecipeTitle0, lv_color_hex(0x5E5E5E), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(cui_RecipeTitle0, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_left(cui_RecipeTitle0, 5, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_right(cui_RecipeTitle0, 5, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_top(cui_RecipeTitle0, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -43,7 +57,7 @@ lv_obj_t * ui_PanelRecipe_create(lv_obj_t * comp_parent)
     lv_obj_t * cui_PanelIngredients;
     cui_PanelIngredients = lv_obj_create(cui_PanelRecipe);
     lv_obj_set_width(cui_PanelIngredients, lv_pct(100));
-    lv_obj_set_height(cui_PanelIngredients, lv_pct(73));
+    lv_obj_set_height(cui_PanelIngredients, lv_pct(65));
     lv_obj_set_align(cui_PanelIngredients, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(cui_PanelIngredients, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(cui_PanelIngredients, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
@@ -99,6 +113,7 @@ lv_obj_t * ui_PanelRecipe_create(lv_obj_t * comp_parent)
     children[UI_COMP_PANELRECIPE_PANELINGREDIENTSBUTTON_RECIPESELECTBTN_SELECTLBL] = cui_SelectLbl;
     lv_obj_add_event_cb(cui_PanelRecipe, get_component_child_event_cb, LV_EVENT_GET_COMP_CHILD, children);
     lv_obj_add_event_cb(cui_PanelRecipe, del_component_child_event_cb, LV_EVENT_DELETE, children);
+    lv_obj_add_event_cb(cui_RecipeSelectBtn, ui_event_comp_PanelRecipe_RecipeSelectBtn, LV_EVENT_ALL, children);
     ui_comp_PanelRecipe_create_hook(cui_PanelRecipe);
     return cui_PanelRecipe;
 }

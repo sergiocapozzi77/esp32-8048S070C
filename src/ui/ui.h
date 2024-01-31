@@ -70,6 +70,19 @@ extern lv_obj_t * ui_SpinnerRecipes;
 extern lv_obj_t * ui_PanelRecipe1;
 extern lv_obj_t * ui_PanelRecipe2;
 extern lv_obj_t * ui_PanelRecipe3;
+// SCREEN: ui_StepByStep
+void ui_StepByStep_screen_init(void);
+extern lv_obj_t * ui_StepByStep;
+extern lv_obj_t * ui_TitlePnl;
+extern lv_obj_t * ui_RecipeTitleLbl;
+extern lv_obj_t * ui_TitlePnl1;
+extern lv_obj_t * ui_RecipeStepLbl;
+void ui_event_NextStepBtn(lv_event_t * e);
+extern lv_obj_t * ui_NextStepBtn;
+extern lv_obj_t * ui_NextLbl;
+void ui_event_PrevStepBtn(lv_event_t * e);
+extern lv_obj_t * ui_PrevStepBtn;
+extern lv_obj_t * ui_PrevLbl;
 // SCREEN: ui_Main
 void ui_Main_screen_init(void);
 extern lv_obj_t * ui_Main;

@@ -366,7 +366,8 @@ void setup()
   }
 
   Serial.println(F("Wifi connected"));
-
+  app.onTick([]()
+             { lv_timer_handler(); });
   // WiFi.begin(ssid, password);
 
   // while (WiFi.status() != WL_CONNECTED)
@@ -381,7 +382,7 @@ void setup()
 
 void loop()
 {
-  lv_timer_handler();
+
   app.tick();
 
   delay(5);

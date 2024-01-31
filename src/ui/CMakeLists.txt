@@ -2,6 +2,7 @@ SET(SOURCES components/ui_comp_panelrecipe.c
     components/ui_comp.c
     screens/ui_Recipe.c
     screens/ui_Recipes.c
+    screens/ui_StepByStep.c
     screens/ui_Main.c
     screens/ui_Options.c
     screens/ui_Components.c
